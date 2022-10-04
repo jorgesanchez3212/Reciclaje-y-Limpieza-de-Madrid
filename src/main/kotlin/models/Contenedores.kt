@@ -1,6 +1,7 @@
 package models
 
 import org.jetbrains.kotlinx.dataframe.annotations.DataSchema
+import utils.Utils
 import java.io.File
 
 
@@ -13,7 +14,7 @@ data class Contenedores(
     val cantidad: Int,
     val lote: Int,
     val distrito: String,
-    val barrio: String?,
+    val barrio: String = "NO EXISTE",
     val tipoVia: String,
     val nombre: String,
     val numero: Int?,
@@ -52,6 +53,8 @@ fun loadContenedoresCSV(csvFile: File):List<Contenedores>{
             )
         }
     return listaCSV
+
+
 
 }
 

@@ -17,6 +17,7 @@ repositories {
 }
 
 dependencies {
+
     testImplementation(kotlin("test"))
     // DataFrames de Kotlin Jetbrains
     implementation("org.jetbrains.kotlinx:dataframe:0.8.1")
@@ -30,6 +31,8 @@ dependencies {
     // LetsPlot
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin:3.2.0")
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:2.3.0")
+    implementation("com.google.code.gson:gson:2.8.5")
+
 }
 
 tasks.test {
