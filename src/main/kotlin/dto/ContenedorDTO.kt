@@ -2,7 +2,7 @@ package dto
 
 import kotlinx.serialization.Serializable
 
-@Serializable
+
 data class ContenedorDTO(val codInterno: String,
                     val tipoContenedor: String,
                     val modelo: String,
@@ -21,8 +21,4 @@ data class ContenedorDTO(val codInterno: String,
                     val direccion: String
 ) {
 
-    fun primeraLinea() : String{
-        return "$codInterno;$tipoContenedor;$modelo;$descripcionModelo;$cantidad;$lote;$distrito;$barrio;$tipoVia;$nombre;"+
-                "$numero;$cordenadax;$cordenaday;$longitud;$latitud;$direccion"
-    }
 }
