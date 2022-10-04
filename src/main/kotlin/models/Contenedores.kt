@@ -14,7 +14,7 @@ data class Contenedores(
     val cantidad: Int,
     val lote: Int,
     val distrito: String,
-    val barrio: String?,
+    val barrio: String = "NO EXISTE",
     val tipoVia: String,
     val nombre: String,
     val numero: Int?,
