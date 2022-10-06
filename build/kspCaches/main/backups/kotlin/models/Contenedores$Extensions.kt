@@ -7,8 +7,8 @@ import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.DataRow
 import org.jetbrains.kotlinx.dataframe.columns.ColumnGroup
 
-val ColumnsContainer<models.Contenedores>.barrio: DataColumn<String?> @JvmName("Contenedores_barrio") get() = this["barrio"] as DataColumn<String?>
-val DataRow<models.Contenedores>.barrio: String? @JvmName("Contenedores_barrio") get() = this["barrio"] as String?
+val ColumnsContainer<models.Contenedores>.barrio: DataColumn<String> @JvmName("Contenedores_barrio") get() = this["barrio"] as DataColumn<String>
+val DataRow<models.Contenedores>.barrio: String @JvmName("Contenedores_barrio") get() = this["barrio"] as String
 val ColumnsContainer<models.Contenedores>.cantidad: DataColumn<Int> @JvmName("Contenedores_cantidad") get() = this["cantidad"] as DataColumn<Int>
 val DataRow<models.Contenedores>.cantidad: Int @JvmName("Contenedores_cantidad") get() = this["cantidad"] as Int
 val ColumnsContainer<models.Contenedores>.codInterno: DataColumn<Int> @JvmName("Contenedores_codInterno") get() = this["codInterno"] as DataColumn<Int>
