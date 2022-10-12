@@ -1,6 +1,7 @@
 package controllers
 
-import mappers.leerCSV
+import mappers.MapperContenedor
+import mappers.MapperResiduos
 import models.Contenedores
 import models.Residuos
 
@@ -12,8 +13,8 @@ class DataFrame {
     fun procesarDataFramesResiduos() {
         println("Residuos con Data Frame")
         println("======================")
-        val residuos by lazy { leerCSV("data/modelo_residuos_2021.csv")}
-        val contenedores by lazy { leerCSV("data/contenedores_varios.csv") }
+        val residuos by lazy { MapperResiduos().leerCSV("data/modelo_residuos_2021.csv")}
+        val contenedores by lazy { MapperContenedor().leerCSV("data/contenedores_varios.csv") }
 //Prueba residuos
         val re by lazy { residuos.toDataFrame() }
         re.cast<Residuos>()

@@ -51,17 +51,20 @@ class MapperResiduos {
                 )
 
             }
-        fun exportarJSON(ruta: String, residuos: SerializableResiduosDTO) {
-            val json= Json { prettyPrint=true }
-            val fichero=File(ruta+File.separator+"fichero.json")
-            fichero.writeText(json.encodeToString(residuos))
-        }
 
-        fun exportarXML(ruta: String, residuos:SerializableResiduosDTO){
-            val xml= XML{indentString=" "}
-            val fichero=File(ruta+File.separator+"fichero.xml")
-            fichero.writeText(xml.encodeToString(residuos))
-        }
+    }
 
+    fun exportarJSON(ruta: String, residuos: SerializableResiduosDTO) {
+        val json= Json { prettyPrint=true }
+        val fichero=File(ruta+File.separator+"ficheroR.json")
+        fichero.writeText(json.encodeToString(residuos))
+    }
+
+
+
+    fun exportarXML(ruta: String, residuos:SerializableResiduosDTO){
+        val xml= XML{indentString=" "}
+        val fichero=File(ruta+File.separator+"ficheroR.xml")
+        fichero.writeText(xml.encodeToString(residuos))
     }
 }
