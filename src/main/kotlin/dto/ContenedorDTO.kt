@@ -2,8 +2,8 @@ package dto
 
 import kotlinx.serialization.Serializable
 
-
-data class ContenedorDTO(val codInterno: String,
+@Serializable
+data class ContenedorDTO(val codInterno: Int,
                     val tipoContenedor: String,
                     val modelo: String,
                     val descripcionModelo: String,
@@ -13,7 +13,7 @@ data class ContenedorDTO(val codInterno: String,
                     val barrio: String = "NO EXISTE",
                     val tipoVia: String,
                     val nombre: String,
-                    val numero: Int,
+                    val numero: Int?,
                     val cordenadax: String,
                     val cordenaday: String,
                     val longitud: String,

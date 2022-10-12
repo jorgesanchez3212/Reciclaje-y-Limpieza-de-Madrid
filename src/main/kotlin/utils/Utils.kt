@@ -9,29 +9,12 @@ import java.io.FileWriter
 import java.io.PrintWriter
 
 class Utils {
-    fun copiarFicheroCSV(directorioOrigen: String,directorioDestino: String){
-        val fichero = File(directorioOrigen)
-        val rutaDestino = File(directorioDestino)
-        if(fichero.exists()){
-            File(directorioOrigen).copyTo(rutaDestino)
-        }else{
-            println("El fichero no existe")
-        }
+    fun comprobarExtension(rutaOrigen: String): Boolean {
+        return rutaOrigen.endsWith(".json") || rutaOrigen.endsWith(".csv") || rutaOrigen.endsWith(".xml")
     }
 
-    fun exportarJSONContenedores(csv: List<Contenedores>,directorioDestino: String){
-
-        val path = directorioDestino+File.separator+"contenedores.json"
-
-        PrintWriter(FileWriter(path)).use {
-            val gsonPretty = GsonBuilder().setPrettyPrinting().create()
-            val jsonMiListaPretty :String = gsonPretty.toJson(csv)
-            it.write(jsonMiListaPretty)
-        }
-
-
-
-
-
+    fun comprobarRuta(rutaOrigen: String, rutaFinal: String): Boolean {
+        return File(rutaOrigen).exists() && File(rutaFinal).exists()
     }
+
 }

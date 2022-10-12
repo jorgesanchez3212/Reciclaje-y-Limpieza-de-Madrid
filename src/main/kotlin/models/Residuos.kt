@@ -1,35 +1,17 @@
 package models
 
+import org.jetbrains.kotlinx.dataframe.annotations.DataSchema
 import java.io.File
-
+@DataSchema
 data class Residuos(
-    val anio: String,
+    val anio: Int?,
     val mes: String,
-    val lote: String,
+    val lote: Int?,
     val residuos: String,
-    val distrito: String,
+    val distrito: Int?,
     val nom_ditrito: String,
-    val toneladas: String
+    val toneladas: Float
 )
 
-fun loadResiduosFromCsv(csvFile: File): List<Residuos> {
-    val residuos: List<Residuos> = csvFile.readLines()
-        .drop(1)
-        .map { it.split(";") }
-        .map {
-            it.map { campo -> campo.trim() }
-            Residuos(
-                anio = it[0],
-                mes = it[1],
-                lote = it[2],
-                residuos = it[3],
-                distrito = it[4],
-                nom_ditrito = it[5],
-                toneladas = it[6]
-            )
-        }
-    return residuos
 
-
-}
 
