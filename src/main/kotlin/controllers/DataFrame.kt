@@ -28,7 +28,15 @@ class DataFrame {
 
         //Media de contenedores de cada tipo por distrito
 
+        println("Media de contenedores de cada tipo por distrito")
 
+        val numContenedores = co.groupBy("distrito","tipoContenedor")
+            .aggregate { count() into "total" }.sortBy("distrito")
+
+        numContenedores
+            .groupBy("distrito")
+            .aggregate { mean() into "media de Contenedores" }
+            .print()
 
 
         //Gráfico con el total de contenedores por distrito
