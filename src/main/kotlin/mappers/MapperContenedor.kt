@@ -58,7 +58,7 @@ class MapperContenedor () {
         val fichero = File(ruta)
         return fichero.readLines()
             .drop(1)
-            .map { contenedores -> contenedores.split(";") }
+            .map { it.split(";") }
             .map {
                 it.map { it.trim() }
                 ContenedorDTO(

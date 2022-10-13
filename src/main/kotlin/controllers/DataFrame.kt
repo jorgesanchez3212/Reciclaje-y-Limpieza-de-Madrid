@@ -14,6 +14,7 @@ class DataFrame {
 
     fun resumen(rutaOrigenResiduos: String,rutaOrigenContenedores: String){
         val tiempoInicial = System.currentTimeMillis()
+        
         val residuos by lazy{MapperResiduos().leerCSV(rutaOrigenResiduos)}
         val contenedores by lazy{MapperContenedor().leerCSV(rutaOrigenContenedores)}
 
@@ -30,12 +31,10 @@ class DataFrame {
 
         println("Media de contenedores de cada tipo por distrito")
 
-        val numContenedores = co.groupBy("distrito","tipoContenedor")
-            .aggregate { count() into "total" }.sortBy("distrito")
 
-        numContenedores
-            .groupBy("distrito")
-            .aggregate { mean() into "media de Contenedores" }
+        co.groupBy("distrito","tipoContenedor")
+            .aggregate { mean("cantidad") into "media de Contenedores" }
+            .sortBy("distrito")
             .print()
 
 
