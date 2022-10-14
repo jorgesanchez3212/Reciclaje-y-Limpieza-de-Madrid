@@ -1,6 +1,8 @@
 package mappers
 
+import Exceptions.FormatException
 import dto.ResiduosDTO
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import models.Residuos
@@ -8,6 +10,7 @@ import nl.adaptivity.xmlutil.serialization.XML
 import repositories.SerializableContenedorDTO
 import repositories.SerializableResiduosDTO
 import java.io.File
+import java.lang.IllegalArgumentException
 
 class MapperResiduos {
     fun toResiduosDTO(residuos: Residuos): ResiduosDTO {
@@ -36,22 +39,35 @@ class MapperResiduos {
 
     fun leerCSV(ruta: String): List<ResiduosDTO> {
         val fichero = File(ruta)
-        return fichero.readLines()
-            .drop(1)
-            .map { residuos -> residuos.split(";") }
-            .map {
-                it.map { it.trim() }
-                ResiduosDTO(
-                    anio = it[0].toIntOrNull(),
-                    mes = it[1],
-                    lote = it[2].toIntOrNull(),
-                    residuos = it[3],
-                    distrito = it[4].toIntOrNull(),
-                    nom_ditrito = it[5],
-                    toneladas = it[6].replace(",", ".").toFloat()
-                )
+        if(fichero.exists()&&fichero.endsWith(".csv")) {
+            return fichero.readLines()
+                .drop(1)
+                .map { residuos -> residuos.split(";") }
+                .map {
+                    it.map { it.trim() }
+                    ResiduosDTO(
+                        anio = it[0].toIntOrNull(),
+                        mes = it[1],
+                        lote = it[2].toIntOrNull(),
+                        residuos = it[3],
+                        distrito = it[4].toIntOrNull(),
+                        nom_ditrito = it[5],
+                        toneladas = it[6].replace(",", ".").toFloat()
+                    )
+                }
+        }
 
-            }
+        throw FormatException("El formato no es correcto")
+
+    }
+
+    fun leerJSON(ruta:String): SerializableResiduosDTO{
+        val fichero = File(ruta)
+        if(fichero.exists()&&fichero.endsWith(".json")) {
+            val json = Json { prettyPrint = true }
+            return Json.decodeFromString(File(ruta).readText())
+        }
+        throw FormatException("El formato no es correcto")
     }
 
     fun exportarCSV(ruta: String, residuos: SerializableResiduosDTO){
