@@ -1,5 +1,12 @@
 package controllers
 
+import jetbrains.datalore.base.values.Color
+import jetbrains.letsPlot.Stat.identity
+import jetbrains.letsPlot.export.ggsave
+import jetbrains.letsPlot.geom.geomBar
+import jetbrains.letsPlot.intern.Plot
+import jetbrains.letsPlot.label.labs
+import jetbrains.letsPlot.letsPlot
 import mappers.MapperContenedor
 import mappers.MapperResiduos
 import models.Contenedores
@@ -22,7 +29,7 @@ class DataFrame {
         val co by lazy { contenedores.toDataFrame() }
         re.cast<Residuos>()
         co.cast<Contenedores>()
-
+        println("Número de contenedores de cada tipo que hay en cada distrito")
         //Número de contenedores de cada tipo que hay en cada distrito
         co.groupBy("distrito","tipoContenedor")
             .aggregate { count() into "total" }.sortBy("distrito").print()
@@ -84,7 +91,7 @@ class DataFrame {
 
         //Tiempo de generación del mismo en milisegundos
         val tiempoFinal = System.currentTimeMillis()
-        println("Tiempo final es ${(tiempoFinal-tiempoInicial)/1000} segundos")
+        println("Tiempo final es ${(tiempoFinal-tiempoInicial)/1000} milisegundos")
 
     }
 
@@ -99,13 +106,13 @@ class DataFrame {
         val co by lazy { contenedores.toDataFrame() }
         re.cast<Residuos>()
         co.cast<Contenedores>()
-
+        println("Número de contenedores de cada tipo que hay en este distrito")
         //Número de contenedores de cada tipo que hay en este distrito
-        co.filter { it["distrito"] == distrito}
+        co.filter { it["distrito"] == distrito.uppercase(Locale.getDefault())}
             .groupBy("distrito","tipoContenedor")
             .aggregate { count() into "Total Contenedores" }
             .print()
-
+        println("Total de toneladas recogidas en ese distrito")
         //Total de toneladas recogidas en ese distrito
         re.filter { it["nom_ditrito"] == distrito}
             .groupBy("nom_ditrito","residuos")
@@ -134,8 +141,6 @@ class DataFrame {
 
 
         //Gráfica del máximo, mínimo y media por meses en dicho distrito
-
-
 
 
 

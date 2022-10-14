@@ -58,10 +58,10 @@ class MapperContenedor () {
 
     fun leerCSV(ruta: String): List<ContenedorDTO> {
         val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".csv")) {
+        if(fichero.exists()&&ruta.endsWith(".csv")) {
             return fichero.readLines()
                 .drop(1)
-                .map { it.split(";") }
+                .map { contenedores->contenedores.split(";") }
                 .map {
                     it.map { it.trim() }
                     ContenedorDTO(
@@ -83,13 +83,14 @@ class MapperContenedor () {
                         direccion = it[15]
                     )
                 }
+        }else {
+            throw FormatException("El formato no es correcto")
         }
-        throw FormatException("El formato no es correcto")
     }
 
     fun leerJSON(ruta:String): SerializableContenedorDTO{
         val ficheroJson = File(ruta)
-        if(ficheroJson.exists()&&ficheroJson.endsWith(".json")) {
+        if(ficheroJson.exists()&&ruta.endsWith(".json")) {
             val json = Json { prettyPrint = true }
             return Json.decodeFromString(ficheroJson.readText())
         }
@@ -98,7 +99,7 @@ class MapperContenedor () {
 
     fun leerXML(ruta:String):SerializableContenedorDTO{
         val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".xml")) {
+        if(fichero.exists()&&ruta.endsWith(".xml")) {
             val xml = XML { indentString = " " }
             return XML.decodeFromString(fichero.readText())
         }

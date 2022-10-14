@@ -38,7 +38,7 @@ class MapperResiduos {
 
     fun leerCSV(ruta: String): List<ResiduosDTO> {
         val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".csv")) {
+        if(fichero.exists()&&ruta.endsWith(".csv")) {
             return fichero.readLines()
                 .drop(1)
                 .map { residuos -> residuos.split(";") }
@@ -54,28 +54,31 @@ class MapperResiduos {
                         toneladas = it[6].replace(",", ".").toFloat()
                     )
                 }
-        }
+        }else {
 
-        throw FormatException("El formato no es correcto")
+            throw FormatException("El formato no es correcto")
+        }
 
     }
 
     fun leerJSON(ruta:String): SerializableResiduosDTO{
         val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".json")) {
+        if(fichero.exists()&&ruta.endsWith(".json")) {
             val json = Json { prettyPrint = true }
             return Json.decodeFromString(File(ruta).readText())
+        }else {
+            throw FormatException("El formato no es correcto")
         }
-        throw FormatException("El formato no es correcto")
     }
 
     fun leerXML(ruta:String):SerializableResiduosDTO{
         val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".xml")) {
+        if(fichero.exists()&&ruta.endsWith(".xml")) {
             val xml = XML { indentString = " " }
             return XML.decodeFromString(fichero.readText())
+        }else {
+            throw FormatException("El formato no es correcto")
         }
-        throw FormatException("El formato no es correcto")
     }
 
     fun exportarCSV(ruta: String, residuos: SerializableResiduosDTO){
