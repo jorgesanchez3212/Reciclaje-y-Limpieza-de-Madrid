@@ -7,7 +7,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import models.Residuos
 import nl.adaptivity.xmlutil.serialization.XML
-import repositories.SerializableContenedorDTO
 import repositories.SerializableResiduosDTO
 import java.io.File
 import java.lang.IllegalArgumentException
@@ -66,6 +65,15 @@ class MapperResiduos {
         if(fichero.exists()&&fichero.endsWith(".json")) {
             val json = Json { prettyPrint = true }
             return Json.decodeFromString(File(ruta).readText())
+        }
+        throw FormatException("El formato no es correcto")
+    }
+
+    fun leerXML(ruta:String):SerializableResiduosDTO{
+        val fichero = File(ruta)
+        if(fichero.exists()&&fichero.endsWith(".xml")) {
+            val xml = XML { indentString = " " }
+            return XML.decodeFromString(fichero.readText())
         }
         throw FormatException("El formato no es correcto")
     }

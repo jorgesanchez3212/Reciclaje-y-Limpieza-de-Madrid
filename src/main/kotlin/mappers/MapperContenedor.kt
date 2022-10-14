@@ -13,7 +13,6 @@ import java.io.File
 
 class MapperContenedor () {
 
-
     fun toContenedorDTO(contenedores: Contenedores): ContenedorDTO {
         return ContenedorDTO(
             codInterno = contenedores.codInterno,
@@ -89,16 +88,25 @@ class MapperContenedor () {
     }
 
     fun leerJSON(ruta:String): SerializableContenedorDTO{
-        val fichero = File(ruta)
-        if(fichero.exists()&&fichero.endsWith(".json")) {
+        val ficheroJson = File(ruta)
+        if(ficheroJson.exists()&&ficheroJson.endsWith(".json")) {
             val json = Json { prettyPrint = true }
-            return Json.decodeFromString(File(ruta).readText())
+            return Json.decodeFromString(ficheroJson.readText())
+        }
+        throw FormatException("El formato no es correcto")
+    }
+
+    fun leerXML(ruta:String):SerializableContenedorDTO{
+        val fichero = File(ruta)
+        if(fichero.exists()&&fichero.endsWith(".xml")) {
+            val xml = XML { indentString = " " }
+            return XML.decodeFromString(fichero.readText())
         }
         throw FormatException("El formato no es correcto")
     }
 
     fun exportarCSV(ruta: String, contenedores: SerializableContenedorDTO){
-        val fichero = File(ruta+"contenedores.csv")
+        val fichero = File(ruta+"ficheroContenedor.csv")
         fichero.writeText("codInterno;lote;tipoContendor;modelo;descripcionModelo;cantidad;lote;distrito;barrio;tipoVia;nombre" +
                 ";numero;cordenadax;cordenaday;longitud;latitud;direccion\n")
         contenedores.contenedores.forEach { fichero.appendText("\n${it.codInterno};${it.tipoContenedor};" +
@@ -110,13 +118,13 @@ class MapperContenedor () {
 
     fun exportarJSON(ruta: String, contenedores: SerializableContenedorDTO) {
         val json = Json { prettyPrint = true }
-        val fichero = File(ruta + File.separator + "ficheroC.json")
+        val fichero = File(ruta + File.separator + "ficheroContenedor.json")
         fichero.writeText(json.encodeToString(contenedores))
     }
 
     fun exportarXML(ruta: String, contenedores: SerializableContenedorDTO) {
         val xml = XML { indentString = " " }
-        val fichero = File(ruta + File.separator + "ficheroC.xml")
+        val fichero = File(ruta + File.separator + "ficheroContenedor.xml")
         fichero.writeText(xml.encodeToString(contenedores))
     }
 }
