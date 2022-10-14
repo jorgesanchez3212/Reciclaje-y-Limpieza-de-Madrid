@@ -5,6 +5,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import models.Residuos
 import nl.adaptivity.xmlutil.serialization.XML
+import repositories.SerializableContenedorDTO
 import repositories.SerializableResiduosDTO
 import java.io.File
 
@@ -51,6 +52,14 @@ class MapperResiduos {
                 )
 
             }
+    }
+
+    fun exportarCSV(ruta: String, residuos: SerializableResiduosDTO){
+        val fichero = File(ruta+"residuos.csv")
+        fichero.writeText("anio;mes;lote;residuos;distrito;nom_ditrito;toneladas\n")
+        residuos.residuos.forEach { fichero.appendText("\n${it.anio};${it.mes};" +
+                "${it.lote};${it.residuos};${it.distrito};${it.lote};${it.distrito};${it.nom_ditrito};" +
+                "${it.toneladas}") }
 
     }
 

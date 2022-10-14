@@ -6,6 +6,7 @@ import kotlinx.serialization.json.Json
 import models.Contenedores
 import nl.adaptivity.xmlutil.serialization.XML
 import repositories.SerializableContenedorDTO
+import repositories.SerializableResiduosDTO
 import java.io.File
 
 class MapperContenedor () {
@@ -80,6 +81,17 @@ class MapperContenedor () {
                     direccion = it[15]
                 )
             }
+    }
+
+    fun exportarCSV(ruta: String, contenedores: SerializableContenedorDTO){
+        val fichero = File(ruta+"contenedores.csv")
+        fichero.writeText("codInterno;lote;tipoContendor;modelo;descripcionModelo;cantidad;lote;distrito;barrio;tipoVia;nombre" +
+                ";numero;cordenadax;cordenaday;longitud;latitud;direccion\n")
+        contenedores.contenedores.forEach { fichero.appendText("\n${it.codInterno};${it.tipoContenedor};" +
+                "${it.modelo};${it.descripcionModelo};${it.cantidad};${it.lote};${it.distrito};${it.barrio};" +
+                "${it.tipoVia};${it.nombre};${it.numero};${it.cordenadax};${it.cordenaday};${it.longitud};" +
+                "${it.latitud};${it.direccion}") }
+
     }
 
     fun exportarJSON(ruta: String, contenedores: SerializableContenedorDTO) {
