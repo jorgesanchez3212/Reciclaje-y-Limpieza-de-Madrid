@@ -14,7 +14,7 @@ class DataFrame {
 
     fun resumen(rutaOrigenResiduos: String,rutaOrigenContenedores: String){
         val tiempoInicial = System.currentTimeMillis()
-        
+
         val residuos by lazy{MapperResiduos().leerCSV(rutaOrigenResiduos)}
         val contenedores by lazy{MapperContenedor().leerCSV(rutaOrigenContenedores)}
 
