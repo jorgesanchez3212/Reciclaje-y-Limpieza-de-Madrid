@@ -1,12 +1,5 @@
 package controllers
 
-import jetbrains.datalore.base.values.Color
-import jetbrains.letsPlot.Stat.identity
-import jetbrains.letsPlot.export.ggsave
-import jetbrains.letsPlot.geom.geomBar
-import jetbrains.letsPlot.intern.Plot
-import jetbrains.letsPlot.label.labs
-import jetbrains.letsPlot.letsPlot
 import mappers.MapperContenedor
 import mappers.MapperResiduos
 import models.Contenedores
