@@ -1,6 +1,6 @@
 package mappers
 
-import Exceptions.FormatException
+import exceptions.FormatException
 import dto.ContenedorDTO
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -8,7 +8,6 @@ import kotlinx.serialization.json.Json
 import models.Contenedores
 import nl.adaptivity.xmlutil.serialization.XML
 import repositories.SerializableContenedorDTO
-import repositories.SerializableResiduosDTO
 import java.io.File
 
 class MapperContenedor () {

@@ -1,6 +1,6 @@
 package mappers
 
-import Exceptions.FormatException
+import exceptions.FormatException
 import dto.ResiduosDTO
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -9,7 +9,7 @@ import models.Residuos
 import nl.adaptivity.xmlutil.serialization.XML
 import repositories.SerializableResiduosDTO
 import java.io.File
-import java.lang.IllegalArgumentException
+
 
 class MapperResiduos {
     fun toResiduosDTO(residuos: Residuos): ResiduosDTO {
@@ -95,7 +95,6 @@ class MapperResiduos {
         val fichero=File(ruta+File.separator+"ficheroR.json")
         fichero.writeText(json.encodeToString(residuos))
     }
-
 
 
     fun exportarXML(ruta: String, residuos:SerializableResiduosDTO){

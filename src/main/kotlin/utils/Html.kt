@@ -14,14 +14,14 @@ class Html(
 
            ) {
 
-    fun distritoHtml(): String{
+    fun directorioHtml(): String{
         return """" <!DOCTYPE html>
             <html lang="en">
             <head>
                 <title>Resumen</title>
             </head>
             <body>
-            <h1>Resumen de recogidas de basura y reciclaje de $distrito</h1>
+            <h1>Resumen de recogidas de basura y reciclaje de Madrid</h1>
             <h3> Fecha de generación: "$tiempoGeneracion"</h3>
             <h3>Autores: Jorge Sánchez Berrocoso y Alfredo Maldonado</h3>
             <h5>Número de contenedores de cada tipo que hay en cada distrito: $numContenedoresDistrito</h5>
@@ -44,14 +44,14 @@ class Html(
             """.trimIndent()
     }
 
-    fun directorioHtml(): String{
+    fun distrito(): String{
         return """" <!DOCTYPE html>
             <html lang="en">
             <head>
                 <title>Resumen</title>
             </head>
             <body>
-            <h1>Resumen de recogidas de basura y reciclaje de Madrid</h1>
+            <h1>Resumen de recogidas de basura y reciclaje de $distrito</h1>
             <h3> Fecha de generación: $fechaHoras</h3>
             <h3>Autores: Jorge Sánchez Berrocoso y Alfredo Maldonado</h3>
            <h5>Número de contenedores de cada tipo que hay en este distrito: $numContenedoresDistrito </h5>
