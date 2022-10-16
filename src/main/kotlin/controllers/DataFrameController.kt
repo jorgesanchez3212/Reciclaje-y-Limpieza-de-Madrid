@@ -65,7 +65,23 @@ class DataFrameController(
      *
      */
     fun graficoTotalContenedoresPorDistrito(){
-
+        var totalContenedorDistrit = co.groupBy("distrito")
+            .aggregate {
+                count() into "total"
+            }.toMap()
+        var fig: Plot = letsPlot(data = totalContenedorDistrit.toMap()) + geomBar(
+            stat = Stat.identity,
+            alpha = 0.8,
+            fill = Color.BLUE
+        ) {
+            x = "distrito"
+            y = "total"
+        } + labs(
+            x = "Distritos",
+            y = "Total",
+            title = "Total de Contenedores por Distrito"
+        )
+        ggsave(fig, "totalContenedoresDistrito.png")
     }
 
     /**
@@ -86,7 +102,16 @@ class DataFrameController(
      *
      */
     fun graficoToneladasMensualesPorDistrito(){
-
+        var mediaToneladas = re.groupBy("nom_ditrito", "toneladas", "mes")
+            .aggregate { mean("toneladas") into "media" }
+            .sortBy("nom_ditrito")
+        var fig = letsPlot(data = mediaToneladas.toMap()) + geomBar(
+            stat = Stat.identity,
+            alpha = 0.8
+        ) {
+            x = "mes"; y = "toneladas"
+        } + xlab("mes"); ylab("toneladas") + ggtitle("media de toneladas mensuales de recogida de basura")
+        ggsave(fig, "graficoToneladasDistrito.png")
     }
 
 
@@ -207,7 +232,23 @@ class DataFrameController(
      *
      */
     fun graficaTotalToneladasPorResiduoDistrito(distrito:String) {
-
+        val tonelada = re.filter { it["nom_ditrito"] == distrito }
+            .groupBy("nom_ditrito", "residuos")
+            .aggregate { sum("toneladas") into "Suma de Toneladas" }
+        var fig:Plot= letsPlot(data = tonelada.toMap())+geomBar(
+            stat = Stat.identity,
+            alpha = 0.8,
+            fill = Color.RED,
+            color = Color.GREEN
+        ){
+            x="nom_ditrito"
+            y="Suma de Toneladas"
+        }+ labs(
+            x = "tonelada",
+            y="mes",
+            title = "Media de Toneladas de Residuo por Distrito"
+        )
+        ggsave(fig, "graficaToneladasResiduoDistrito.png")
 
     }
 
