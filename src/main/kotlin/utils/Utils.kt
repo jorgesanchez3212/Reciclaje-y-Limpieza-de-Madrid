@@ -1,12 +1,7 @@
 package utils
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import models.Contenedores
-import org.apache.poi.ss.formula.functions.T
 import java.io.File
-import java.io.FileWriter
-import java.io.PrintWriter
+
 
 class Utils {
     fun comprobarExtension(rutaOrigen: String): Boolean {

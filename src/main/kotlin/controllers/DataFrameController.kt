@@ -1,11 +1,23 @@
 package controllers
 
+import dto.ContenedorDTO
+import dto.ResiduosDTO
+import jetbrains.letsPlot.Stat
+import jetbrains.letsPlot.export.ggsave
+import jetbrains.letsPlot.geom.geomBar
+import jetbrains.letsPlot.intern.Plot
+import jetbrains.letsPlot.label.ggtitle
+import jetbrains.letsPlot.label.labs
+import jetbrains.letsPlot.label.xlab
+import jetbrains.letsPlot.label.ylab
+import jetbrains.letsPlot.letsPlot
 import models.Contenedores
 import models.Residuos
 import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.html
 import utils.Html
+import java.awt.Color
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.system.measureTimeMillis

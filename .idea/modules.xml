@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Reciclaje-y-Limpieza-de-Madrid.iml" filepath="$PROJECT_DIR$/.idea/Reciclaje-y-Limpieza-de-Madrid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Reciclaje-y-Limpieza-de-Madrid.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Reciclaje-y-Limpieza-de-Madrid.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Reciclaje-y-Limpieza-de-Madrid.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Reciclaje-y-Limpieza-de-Madrid.test.iml" />
     </modules>
   </component>
 </project>

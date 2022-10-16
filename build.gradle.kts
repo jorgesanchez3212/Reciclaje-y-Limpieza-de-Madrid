@@ -6,17 +6,22 @@ plugins {
     id("org.jetbrains.kotlinx.dataframe") version "0.8.1"
     // Plugin para serializar
     kotlin("plugin.serialization") version "1.7.10"
-    application
+
+
 }
 
-group = "org.example"
 version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven(url = "https://repo1.maven.org/maven2/")
+    maven(url = "https://repo.osgeo.org/repository/release/")
+    maven(url = "https://repo.osgeo.org/repository/snapshot/")
 }
 
 dependencies {
+    //Dependencia para la reflexión
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.20")
 
     testImplementation(kotlin("test"))
     // DataFrames de Kotlin Jetbrains
@@ -31,14 +36,31 @@ dependencies {
     // LetsPlot
     implementation("org.jetbrains.lets-plot:lets-plot-kotlin:3.2.0")
     implementation("org.jetbrains.lets-plot:lets-plot-image-export:2.3.0")
-    implementation("com.google.code.gson:gson:2.8.5")
+
+    // Mapas GeoTools, para evitar el error de java media, quitar
+    implementation("org.geotools:gt-main:27-SNAPSHOT") {
+        exclude(group = "javax.media", module = "jai_core")
+    }
+    implementation("org.geotools:gt-geojson:27-SNAPSHOT") {
+        exclude(group = "javax.media", module = "jai_core")
+    }
+    implementation("org.geotools:gt-shapefile:27-SNAPSHOT") {
+        exclude(group = "javax.media", module = "jai_core")
+    }
+    // Puente entre Les Plot y GeoTools
+    implementation("org.jetbrains.lets-plot:lets-plot-kotlin-geotools:3.1.0")
 
     // Serializa a XML con Serialization  para jvm
     // https://github.com/pdvrieze/xmlutil
     implementation("io.github.pdvrieze.xmlutil:core-jvm:0.84.3")
     implementation("io.github.pdvrieze.xmlutil:serialization-jvm:0.84.3")
 
+    //Jackson
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1")
+
 }
+
 
 tasks.test {
     useJUnitPlatform()
@@ -47,3 +69,7 @@ tasks.test {
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+// Data Schema generator
+// Make IDE aware of the generated code:
+kotlin.sourceSets.getByName("main").kotlin.srcDir("build/generated/ksp/main/kotlin/")

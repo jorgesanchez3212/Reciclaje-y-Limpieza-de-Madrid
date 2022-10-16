@@ -55,7 +55,7 @@ class MapperContenedor () {
     }
 
 
-    fun leerCSV(ruta: String): List<ContenedorDTO> {
+    fun leerCSV(ruta: String): List<Contenedores> {
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".csv")) {
             return fichero.readLines()
@@ -63,7 +63,7 @@ class MapperContenedor () {
                 .map { contenedores->contenedores.split(";") }
                 .map {
                     it.map { it.trim() }
-                    ContenedorDTO(
+                    Contenedores(
                         codInterno = it[0].toInt(),
                         tipoContenedor = it[1],
                         modelo = it[2],

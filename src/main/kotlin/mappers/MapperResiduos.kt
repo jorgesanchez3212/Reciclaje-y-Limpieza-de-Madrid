@@ -36,7 +36,7 @@ class MapperResiduos {
         )
     }
 
-    fun leerCSV(ruta: String): List<ResiduosDTO> {
+    fun leerCSV(ruta: String): List<Residuos> {
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".csv")) {
             return fichero.readLines()
@@ -44,7 +44,7 @@ class MapperResiduos {
                 .map { residuos -> residuos.split(";") }
                 .map {
                     it.map { it.trim() }
-                    ResiduosDTO(
+                    Residuos(
                         anio = it[0].toIntOrNull(),
                         mes = it[1],
                         lote = it[2].toIntOrNull(),
