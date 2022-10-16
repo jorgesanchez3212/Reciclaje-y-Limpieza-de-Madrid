@@ -5,7 +5,10 @@ import models.Residuos
 import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.html
+import utils.Html
+import java.time.LocalDateTime
 import java.util.*
+import kotlin.system.measureTimeMillis
 
 /**
  * Data frame Controller
@@ -140,6 +143,34 @@ class DataFrameController(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //Resumen Distrito
 
     /**
@@ -175,7 +206,7 @@ class DataFrameController(
      * Gráfico con el total de toneladas por residuo en ese distrito
      *
      */
-    fun graficaTotalToneladasPorResiduoDistrito() {
+    fun graficaTotalToneladasPorResiduoDistrito(distrito:String) {
 
 
     }
@@ -204,13 +235,82 @@ class DataFrameController(
      * Gráfica del máximo, mínimo y media por meses en dicho distrito
      *
      */
-    fun graficaMaxMinMediaMesesDistrito(){
+    fun graficaMaxMinMediaMesesDistrito(distrito:String){
 
 
     }
 
 
-    
+    fun resumen() : String{
+        var numContenedoresDistrito : String
+        var mediaContenedorDistrito: String
+        var mediaToneladasAnualesTipoBasuraDistrito: String
+        var maxminavgDesviacionToneladasDistrito: String
+        var sumRecogidoAnualDistrito: String
+        var cantidadRecogidaTipoPorDistrito : String
+        var total: String = totalToneladasRecogidasDistrito("Barajas")
+
+
+        var tiempoGeneracion = measureTimeMillis {
+            numContenedoresDistrito = numeroContenedoresTipoDistrito()
+            mediaContenedorDistrito = mediaContenedoresTipoDistrito()
+            graficoTotalContenedoresPorDistrito()
+            mediaToneladasAnualesTipoBasuraDistrito = mediaToneladasAnualesTipoBasuraDistrito()
+            graficoToneladasMensualesPorDistrito()
+            maxminavgDesviacionToneladasDistrito = maxMinMediaDesviacionToneladasAnualesTipoPorDistrito()
+            sumRecogidoAnualDistrito = sumaRecogidoAnualPorDistrito()
+            cantidadRecogidaTipoPorDistrito = cantidadTipoPorDistrito()
+        }
+
+        var resumenHtml =  Html(
+            numContenedoresDistrito,
+            mediaContenedorDistrito,
+            mediaToneladasAnualesTipoBasuraDistrito,
+            maxminavgDesviacionToneladasDistrito,
+            sumRecogidoAnualDistrito,
+            cantidadRecogidaTipoPorDistrito,
+            tiempoGeneracion.toString(),
+            "Barajas",
+            LocalDateTime.now().toString(),
+            total
+        )
+        return resumenHtml.directorioHtml()
+
+    }
+
+    fun resumenDistrito(distrito:String) : String{
+        var numContenedoresDistrito : String
+        var mediaContenedorDistrito: String = mediaContenedoresTipoDistrito()
+        var mediaToneladasAnualesTipoBasuraDistrito: String = mediaToneladasAnualesTipoBasuraDistrito()
+        var maxminavgDesviacionToneladasDistrito: String
+        var sumRecogidoAnualDistrito: String = sumaRecogidoAnualPorDistrito()
+        var cantidadRecogidaTipoPorDistrito : String = cantidadTipoPorDistrito()
+        var total: String
+
+
+        var tiempoGeneracion = measureTimeMillis {
+            numContenedoresDistrito = numeroContenedoresTipoDistrito(distrito)
+            total = totalToneladasRecogidasDistrito(distrito)
+            graficaTotalToneladasPorResiduoDistrito(distrito)
+            maxminavgDesviacionToneladasDistrito = maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito)
+            graficaMaxMinMediaMesesDistrito(distrito)
+        }
+
+        var resumenHtml =  Html(
+            numContenedoresDistrito,
+            mediaContenedorDistrito,
+            mediaToneladasAnualesTipoBasuraDistrito,
+            maxminavgDesviacionToneladasDistrito,
+            sumRecogidoAnualDistrito,
+            cantidadRecogidaTipoPorDistrito,
+            tiempoGeneracion.toString(),
+            distrito,
+            LocalDateTime.now().toString(),
+            total
+        )
+        return resumenHtml.distrito()
+
+    }
 
 
 

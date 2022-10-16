@@ -2,13 +2,13 @@ package utils
 
 class Html(
     val numContenedoresDistrito: String,
-           val mediaContenedoresDistrito:String,
-           val mediaToneladasAnualesTipoBasuraDistrito: String,
-           val maxminavgDesviacionToneladasDistrito: String,
-           val sumRecogidoAnualDistrito: String,
-           val cantidadRecogidaTipoPorDistrito: String,
-           val tiempoGeneracion: String,
-           val distrito: String,
+            val mediaContenedoresDistrito:String,
+            val mediaToneladasAnualesTipoBasuraDistrito: String,
+            val maxminavgDesviacionToneladasDistrito: String,
+            val sumRecogidoAnualDistrito: String,
+            val cantidadRecogidaTipoPorDistrito: String,
+            val tiempoGeneracion: String,
+            val distrito: String,
             val fechaHoras: String,
             val totalResiduos: String
 
