@@ -15,31 +15,32 @@
             <stringArg name="classpath">
               <args>
                 <arg>$MODULE_DIR$/../../build/classes/kotlin/main</arg>
+                <arg>$MODULE_DIR$/../../build/resources/main</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.7.20/12b2501e33bb6373e8e347c86d85481863629381/kotlin-reflect-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe/0.8.1/81b8e855a7098b6320907bd2dea7805d23e3d42e/dataframe-0.8.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-kotlin-jvm/3.2.0/89031f91c7f82807b5b1384d5f5914155c1320a2/plot-api-jvm-3.2.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-common/2.3.0/62501fe2e15a57e1825a45e982a1dc07e68e39e2/lets-plot-common-2.3.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.microutils/kotlin-logging-jvm/2.1.23/f5bc6f73fc1dd350953c3b27b1fa0f544a045893/kotlin-logging-jvm-2.1.23.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.pdvrieze.xmlutil/serialization-jvm/0.84.3/bb9f876fcdb0ab47cda0842561c6ad7a2895e0ef/xmlutil-serialization-jvm-0.84.3.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.pdvrieze.xmlutil/core-jvm/0.84.3/3d816367a4bcea2b80373c04b5040c28f7b44a4e/xmlutil-jvm-0.84.3.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe-arrow/0.8.1/795ebe4316b15c0f54354fb9a0803c7c3337e3f7/dataframe-arrow-0.8.1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe-excel/0.8.1/af361d7ea3bd46f5ba3d9b4b17595f05f05a9c69/dataframe-excel-0.8.1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.7.10/d70d7d2c56371f7aa18f32e984e3e2e998fe9081/kotlin-stdlib-jdk8-1.7.10.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/1.7.20/12b2501e33bb6373e8e347c86d85481863629381/kotlin-reflect-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.3.0-alpha16/48f9328cc71d9c496ef9987fe5dc028a6c82b10f/logback-classic-1.3.0-alpha16.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-image-export/2.3.0/ef8bb183261aee8af65c33e2e07177f93e06dc81/lets-plot-image-export-2.3.0.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-geojson/27-SNAPSHOT/2f47a3fe1893fa8451181c392576b822578e1fd8/gt-geojson-27-SNAPSHOT.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-shapefile/27-SNAPSHOT/d0a456773b2804d7952febb29e36f3f3c58b39bc/gt-shapefile-27-SNAPSHOT.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-main/27-SNAPSHOT/74fa4d6aadd3ae5346a765195af6dd4efabf5cb2/gt-main-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-geojson/27-SNAPSHOT/d20aaba4e1386cdb26e4b22c8653bb1120f2ad9e/gt-geojson-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-shapefile/27-SNAPSHOT/b413f53503f7ee270836a3c183e26517639df842/gt-shapefile-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-main/27-SNAPSHOT/3f74a93a1ff6b3f9417ace9ba3fa30459a66ee96/gt-main-27-SNAPSHOT.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-kotlin-geotools/3.1.0/d5051b92ca8517b290e03c357c55db038653e401/lets-plot-kotlin-geotools-3.1.0.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.pdvrieze.xmlutil/serialization-jvm/0.84.3/bb9f876fcdb0ab47cda0842561c6ad7a2895e0ef/xmlutil-serialization-jvm-0.84.3.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.pdvrieze.xmlutil/core-jvm/0.84.3/3d816367a4bcea2b80373c04b5040c28f7b44a4e/xmlutil-jvm-0.84.3.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-databind/2.14.0-rc1/e89ac425a32c3e59653df69ee2050734577d1357/jackson-databind-2.14.0-rc1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.14.0-rc1/a5d9b5fa8d49aea385608f14d0cc269bf9489525/jackson-core-2.14.0-rc1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-annotations/2.14.0-rc1/baee36be5fe485569d34dacf40536bc668dc1891/jackson-annotations-2.14.0-rc1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.dataformat/jackson-dataformat-xml/2.14.0-rc1/ca08ca565e2bf35292be9f8ee32cf406b3a01a22/jackson-dataformat-xml-2.14.0-rc1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe-arrow/0.8.1/795ebe4316b15c0f54354fb9a0803c7c3337e3f7/dataframe-arrow-0.8.1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe-excel/0.8.1/af361d7ea3bd46f5ba3d9b4b17595f05f05a9c69/dataframe-excel-0.8.1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.7.10/d70d7d2c56371f7aa18f32e984e3e2e998fe9081/kotlin-stdlib-jdk8-1.7.10.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test-junit5/1.7.10/1977faecddc1c312be4775e6110d3072f553d89d/kotlin-test-junit5-1.7.10.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-test/1.7.10/4d644a88cc0a386712d4b1c1b4ca748203421e07/kotlin-test-1.7.10.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.7.10/1ef73fee66f45d52c67e2aca12fd945dbe0659bf/kotlin-stdlib-jdk7-1.7.10.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-jvm/0.3.2/3996d021ef470dc9dcdb48c4a24640f72586661/kotlinx-datetime-jvm-0.3.2.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-json-jvm/1.3.3/6298c404c1159685fb657f15fa5b78630da58c96/kotlinx-serialization-json-jvm-1.3.3.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.7.10/1ef73fee66f45d52c67e2aca12fd945dbe0659bf/kotlin-stdlib-jdk7-1.7.10.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-jvm/1.3.3/3c22103b5d8e3c262db19e85d90405ca78b49efd/kotlinx-serialization-core-jvm-1.3.3.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.7.20/726594ea9ba2beb2ee113647fefa9a10f9fabe52/kotlin-stdlib-1.7.20.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe-core/0.8.1/1a192bf11511f207935f29bddad790fb0347610d/dataframe-core-0.8.1.jar</arg>
@@ -49,14 +50,14 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.xmlgraphics/batik-codec/1.14/f63ed1f18412cead069fa97b677fdbda43b6a1af/batik-codec-1.14.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.xmlgraphics/batik-transcoder/1.14/ad3a750a02e53cf9b66d67371f0ddf889f06c070/batik-transcoder-1.14.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twelvemonkeys.imageio/imageio-tiff/3.8.1/353b657e8ab65d9e8c6920f8a04ad78addce6224/imageio-tiff-3.8.1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-referencing/27-SNAPSHOT/27410bca3158ddf5a90e7a279f131328b75edf5f/gt-referencing-27-SNAPSHOT.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-http/27-SNAPSHOT/acd2a7b365fb1b0bc782deb645e3c5bf7099e0c6/gt-http-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-referencing/27-SNAPSHOT/caa92e8356d0354415dcf4b2d32dc44ac391a45c/gt-referencing-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-http/27-SNAPSHOT/fb6adb4e9f4c1ef799b8cd0432f3d13a5ec693ed/gt-http-27-SNAPSHOT.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.locationtech.jts/jts-core/1.18.2/cf69824dabd57099eff3bceb1a93a2061cc9a0ff/jts-core-1.18.2.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.6/ba72cf0c40cf701e972fe7720ae844629f4ecca2/commons-text-1.6.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.10.0/3363381aef8cef2dbc1023b3e3a9433b08b64e01/commons-text-1.10.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.re2j/re2j/1.6/a13e879fd7971738d06020fefeb108cc14e14169/re2j-1.6.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.googlecode.json-simple/json-simple/1.1.1/c9ad4a0850ab676c5c64461a05ca524cdfff59f1/json-simple-1.1.1.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-metadata/27-SNAPSHOT/346324216a8fb79ffde2452e3122f925558a7054/gt-metadata-27-SNAPSHOT.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.8.1/6505a72a097d9270f7a9e7bf42c4238283247755/commons-lang3-3.8.1.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-metadata/27-SNAPSHOT/3c5c934e6e6fa2432a9b9cce1adf13ef382ffabf/gt-metadata-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.12.0/c6842c86792ff03b9f1d1fe2aab8dc23aa6c6f0e/commons-lang3-3.12.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.fasterxml.woodstox/woodstox-core/6.3.1/bf29b07ca4dd81ef3c0bc18c8bd5617510a81c5d/woodstox-core-6.3.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.2.1/a3f7325c52240418c2ba257b103c3c550e140c83/stax2-api-4.2.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar</arg>
@@ -85,7 +86,7 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twelvemonkeys.common/common-io/3.8.1/8bc58d4d1e2aa6646257b93740c3570fd36c821d/common-io-3.8.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twelvemonkeys.common/common-lang/3.8.1/7273c87e07b4ab2bb2d61782775f398e1ae1bb09/common-lang-3.8.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-ddense/0.34/28b1a589c963ab43283646c8a1b2749c6a6f20ff/ejml-ddense-0.34.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-opengis/27-SNAPSHOT/8ece391a79f3ad66c7c470cebb42bed57f858aac/gt-opengis-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools/gt-opengis/27-SNAPSHOT/c429173b5e5ea13cb25a51335c620753d86f0a97/gt-opengis-27-SNAPSHOT.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-pool/commons-pool/1.5.4/75b6e20c596ed2945a259cea26d7fadd298398e6/commons-pool-1.5.4.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/it.geosolutions.jgridshift/jgridshift-core/1.3/314702a7b6e634e1c74589983a6762974b9c51c8/jgridshift-core-1.3.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sf.geographiclib/GeographicLib-Java/1.49/7ff2164e69fa04e1ef2ca5079e1cee298a936ea1/GeographicLib-Java-1.49.jar</arg>
@@ -107,12 +108,12 @@
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/24247f3bb052ee068971393bdb83e04512bb1c3c/serializer-2.7.2.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/3789d9fada2d3d458c4ba2de349d48780f381ee3/xml-apis-1.4.01.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.ejml/ejml-core/0.34/4bee8166d7ec00dcc8516385c302d68d947db4c9/ejml-core-0.34.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools.ogc/net.opengis.ows/27-SNAPSHOT/27c97378058777f3b51e00243d556b1aac07a661/net.opengis.ows-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools.ogc/net.opengis.ows/27-SNAPSHOT/4e435e5887ddc27a7f4cbdcdbbb6f6814b47a0f/net.opengis.ows-27-SNAPSHOT.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apiguardian/apiguardian-api/1.1.0/fc9dff4bb36d627bdc553de77e1f17efd790876c/apiguardian-api-1.1.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.2.0/28c11eb91f9b6d8e200631d46e20a7f407f2a046/opentest4j-1.2.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.0.4/f029a2aefe2b3e1517573c580f948caac31b1056/commons-logging-1.0.4.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/systems.uom/systems-common/2.0.2/1a429d4c93652b73a169c3f0ded26f7831c27ce6/systems-common-2.0.2.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools.ogc/org.w3.xlink/27-SNAPSHOT/c325948fc5f5f7e645b046eae3c828e73c7ce81c/org.w3.xlink-27-SNAPSHOT.jar</arg>
+                <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.geotools.ogc/org.w3.xlink/27-SNAPSHOT/2c782d324f8d296c2cf29a6a934a27d997b99172/org.w3.xlink-27-SNAPSHOT.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.emf/org.eclipse.emf.ecore.xmi/2.15.0/9aa1a584be1df1eb0ef8fae7123784af6e51f47a/org.eclipse.emf.ecore.xmi-2.15.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.emf/org.eclipse.emf.ecore/2.15.0/ccfc09c8b6a0d4fadde09216d8a07678d38998de/org.eclipse.emf.ecore-2.15.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.emf/org.eclipse.emf.common/2.15.0/e0f1608a9855651e899d609b106ae78f903a2f04/org.eclipse.emf.common-2.15.0.jar</arg>
@@ -176,52 +177,51 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Reciclaje-y-Limpieza-de-Madrid.main" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:dataframe:0.8.1" level="project" />
     <orderEntry type="library" name="Gradle: io.github.microutils:kotlin-logging-jvm:2.1.23" level="project" />
-    <orderEntry type="library" name="Gradle: io.github.pdvrieze.xmlutil:serialization-jvm:0.84.3" level="project" />
-    <orderEntry type="library" name="Gradle: io.github.pdvrieze.xmlutil:core-jvm:0.84.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.3.0-alpha16" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.lets-plot:lets-plot-image-export:2.3.0" level="project" />
     <orderEntry type="library" name="Gradle: org.geotools:gt-geojson:27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.geotools:gt-shapefile:27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.geotools:gt-main:27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.lets-plot:lets-plot-kotlin-geotools:3.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.github.pdvrieze.xmlutil:serialization-jvm:0.84.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.github.pdvrieze.xmlutil:core-jvm:0.84.3" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.10" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:1.7.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:dataframe-arrow:0.8.1" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:dataframe-excel:0.8.1" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:dataframe-core:0.8.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.3.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.3" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.lets-plot:lets-plot-kotlin-jvm:3.2.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.7.20" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:2.0.0-alpha7" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.7.20" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.3.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.3.3" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.3.0-alpha16" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlgraphics:batik-codec:1.14" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlgraphics:batik-transcoder:1.14" level="project" />
     <orderEntry type="library" name="Gradle: com.twelvemonkeys.imageio:imageio-tiff:3.8.1" level="project" />
     <orderEntry type="library" name="Gradle: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
-    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.8.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-lang3:3.12.0" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.14.0-rc1" level="project" />
     <orderEntry type="library" name="Gradle: org.geotools:gt-referencing:27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.geotools:gt-http:27-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.locationtech.jts:jts-core:1.18.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.apache.commons:commons-text:1.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-text:1.10.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.re2j:re2j:1.6" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.14.0-rc1" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.14.0-rc1" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.woodstox:woodstox-core:6.3.1" level="project" />
     <orderEntry type="library" name="Gradle: org.codehaus.woodstox:stax2-api:4.2.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.10" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-junit5:1.7.10" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.poi:poi:5.2.2" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-csv:1.8" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.lets-plot:lets-plot-common:2.3.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.3" level="project" />
-    <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlgraphics:batik-bridge:1.14" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlgraphics:batik-awt-util:1.14" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.xmlgraphics:batik-util:1.14" level="project" />
@@ -242,6 +242,7 @@
     <orderEntry type="library" name="Gradle: commons-pool:commons-pool:1.5.4" level="project" />
     <orderEntry type="library" name="Gradle: it.geosolutions.jgridshift:jgridshift-core:1.3" level="project" />
     <orderEntry type="library" name="Gradle: net.sf.geographiclib:GeographicLib-Java:1.49" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.3.3" level="project" />
     <orderEntry type="library" name="Gradle: org.junit.jupiter:junit-jupiter-api:5.6.0" level="project" />
     <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Gradle: org.apache.commons:commons-collections4:4.4" level="project" />
@@ -289,8 +290,8 @@
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.arrow:arrow-format:8.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.commons:commons-compress:1.21" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.apache.poi:poi-ooxml:5.2.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.squareup:kotlinpoet:1.11.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.beust:klaxon:5.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Gradle: com.squareup:kotlinpoet:1.11.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.github.kittinunf.fuel:fuel:2.3.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: org.junit.jupiter:junit-jupiter-engine:5.6.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Gradle: com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.14.0-rc1" level="project" />

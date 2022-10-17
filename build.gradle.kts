@@ -58,6 +58,7 @@ dependencies {
     //Jackson
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.14.0-rc1")
+    implementation(kotlin("stdlib-jdk8"))
 
 }
 
@@ -73,3 +74,4 @@ tasks.withType<KotlinCompile> {
 // Data Schema generator
 // Make IDE aware of the generated code:
 kotlin.sourceSets.getByName("main").kotlin.srcDir("build/generated/ksp/main/kotlin/")
+

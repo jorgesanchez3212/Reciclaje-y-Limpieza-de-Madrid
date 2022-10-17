@@ -9,9 +9,10 @@ fun main(args: Array<String>){
     var b = MapperContenedor().leerCSV("data/contenedores_varios.csv")
 
     val ab = DataFrameController(a,b)
-    ab.resumen()
+    var arb = ab.resumen()
     ab.resumenDistrito("Barajas")
-    
+    var fichero = File("C:\\Users\\pejor\\OneDrive\\Escritorio\\Reciclaje-y-Limpieza-de-Madrid\\src\\main\\resources\\resumen.html")
+    fichero.writeText(arb)
 }
 
 
