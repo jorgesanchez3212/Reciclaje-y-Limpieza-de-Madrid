@@ -7,7 +7,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import models.Contenedores
 import nl.adaptivity.xmlutil.serialization.XML
-import repositories.SerializableContenedorDTO
 import java.io.File
 
 class MapperContenedor () {
@@ -55,7 +54,7 @@ class MapperContenedor () {
     }
 
 
-    fun leerCSV(ruta: String): List<Contenedores> {
+    fun leerCSV(ruta: String): List<ContenedorDTO> {
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".csv")) {
             return fichero.readLines()
@@ -63,7 +62,7 @@ class MapperContenedor () {
                 .map { contenedores->contenedores.split(";") }
                 .map {
                     it.map { it.trim() }
-                    Contenedores(
+                    ContenedorDTO(
                         codInterno = it[0].toInt(),
                         tipoContenedor = it[1],
                         modelo = it[2],
@@ -87,7 +86,7 @@ class MapperContenedor () {
         }
     }
 
-    fun leerJSON(ruta:String): SerializableContenedorDTO{
+    fun leerJSON(ruta:String): List<ContenedorDTO>{
         val ficheroJson = File(ruta)
         if(ficheroJson.exists()&&ruta.endsWith(".json")) {
             val json = Json { prettyPrint = true }
@@ -96,7 +95,7 @@ class MapperContenedor () {
         throw FormatException("El formato no es correcto")
     }
 
-    fun leerXML(ruta:String):SerializableContenedorDTO{
+    fun leerXML(ruta:String):List<ContenedorDTO>{
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".xml")) {
             val xml = XML { indentString = " " }
@@ -105,24 +104,28 @@ class MapperContenedor () {
         throw FormatException("El formato no es correcto")
     }
 
-    fun exportarCSV(ruta: String, contenedores: SerializableContenedorDTO){
-        val fichero = File(ruta+"ficheroContenedor.csv")
+    fun copiarCSV(ruta: String,rutaDestino: String){
+        val fichero = File(ruta+File.separator+"contenedores_varios.csv")
+        fichero.copyTo(File(rutaDestino+File.separator+"contenedores_varios.csv"))
+    }
+    fun exportarCSV(ruta: String, contenedores:  List<ContenedorDTO>){
+        val fichero = File(ruta+File.separator+"ficheroContenedor.csv")
         fichero.writeText("codInterno;lote;tipoContendor;modelo;descripcionModelo;cantidad;lote;distrito;barrio;tipoVia;nombre" +
                 ";numero;cordenadax;cordenaday;longitud;latitud;direccion\n")
-        contenedores.contenedores.forEach { fichero.appendText("\n${it.codInterno};${it.tipoContenedor};" +
+        contenedores.forEach { fichero.appendText("\n${it.codInterno};${it.tipoContenedor};" +
                 "${it.modelo};${it.descripcionModelo};${it.cantidad};${it.lote};${it.distrito};${it.barrio};" +
                 "${it.tipoVia};${it.nombre};${it.numero};${it.cordenadax};${it.cordenaday};${it.longitud};" +
                 "${it.latitud};${it.direccion}") }
 
     }
 
-    fun exportarJSON(ruta: String, contenedores: SerializableContenedorDTO) {
+    fun exportarJSON(ruta: String, contenedores: List<ContenedorDTO>) {
         val json = Json { prettyPrint = true }
         val fichero = File(ruta + File.separator + "ficheroContenedor.json")
         fichero.writeText(json.encodeToString(contenedores))
     }
 
-    fun exportarXML(ruta: String, contenedores: SerializableContenedorDTO) {
+    fun exportarXML(ruta: String, contenedores: List<ContenedorDTO>) {
         val xml = XML { indentString = " " }
         val fichero = File(ruta + File.separator + "ficheroContenedor.xml")
         fichero.writeText(xml.encodeToString(contenedores))

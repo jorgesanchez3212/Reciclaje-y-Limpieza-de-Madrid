@@ -192,7 +192,7 @@ class DataFrameController(
      * @return String
      */
 
-    fun numeroContenedoresTipoDistrito(distrito: String): String{
+    fun numeroContenedoresTipoPorDistrito(distrito: String): String{
         return co.groupBy("distrito","tipoContenedor")
             .filter { it.distrito.uppercase() == distrito.uppercase() }
             .aggregate { count() into "numero_contenedores" }
@@ -355,7 +355,7 @@ class DataFrameController(
 
 
         var tiempoGeneracion = measureTimeMillis {
-            numContenedoresDistrito = numeroContenedoresTipoDistrito(distrito)
+            numContenedoresDistrito = numeroContenedoresTipoPorDistrito(distrito)
             total = totalToneladasRecogidasDistrito(distrito)
             graficaTotalToneladasPorResiduoDistrito(distrito)
             maxminavgDesviacionToneladasDistrito = maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito)
