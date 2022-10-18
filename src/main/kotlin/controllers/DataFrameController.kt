@@ -16,6 +16,7 @@ import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.html
 import utils.Html
 import java.awt.Color
+import java.io.File
 import java.time.LocalDateTime
 import java.util.*
 
@@ -68,9 +69,9 @@ class DataFrameController(
      * @return String
      */
     fun mediaContenedoresTipoDistrito() : String{
-       return co.groupBy("distrito","tipoContenedor")
-           .aggregate { meanOf{ sum("cantidad") } into "media" }
-           .sortBy("distrito")
+        return co.groupBy("distrito","tipoContenedor")
+            .aggregate { meanOf{ sum("cantidad") } into "media" }
+            .sortBy("distrito")
             .html()
     }
 
@@ -78,7 +79,7 @@ class DataFrameController(
      * Gráfico con el total de contenedores por distrito
      *
      */
-    fun graficoTotalContenedoresPorDistrito(){
+    fun graficoTotalContenedoresPorDistrito(rutaDestino: String){
         var a =   co.groupBy("distrito","tipoContenedor")
             .aggregate { count() into "total" }
             .sortBy("distrito")
@@ -95,7 +96,7 @@ class DataFrameController(
             y = "total",
             title = "total de contenedores por distrito"
         )
-        ggsave(fig,"totalContenedores.png" , path = "src/main/resources")
+        ggsave(fig,"totalContenedores.png" , path = rutaDestino+ File.separator+"graficoTotalContenedoresPorDistrito.png")
     }
 
     /**
@@ -116,7 +117,7 @@ class DataFrameController(
      * Gráfico de media de toneladas mensuales de recogida de basura por distrito
      *
      */
-    fun graficoToneladasMensualesPorDistrito(){
+    fun graficoToneladasMensualesPorDistrito(rutaDestino:String){
         var a = re.groupBy("nom_ditrito","mes")
             .aggregate { mean("toneladas") into  "media" }
             .sortBy("nom_ditrito")
@@ -135,7 +136,7 @@ class DataFrameController(
             title = "media de toneladas mensuales por mes "
         )
 
-        ggsave(fig,"graficoToneladasMensualesPorDistrito.png",path = "src/main/resources")
+        ggsave(fig,"graficoToneladasMensualesPorDistrito.png",path = rutaDestino+ File.separator+"graficoToneladasMensualesPorDistrito.png")
     }
 
 
@@ -307,7 +308,7 @@ class DataFrameController(
     }
 
 
-    fun resumen() : String{
+    fun resumen(rutaDestino: String) : String{
         var numContenedoresDistrito : String
         var mediaContenedorDistrito: String
         var mediaToneladasAnualesTipoBasuraDistrito: String
@@ -320,9 +321,9 @@ class DataFrameController(
         var tiempoGeneracion = measureTimeMillis {
             numContenedoresDistrito = numeroContenedoresTipoDistrito()
             mediaContenedorDistrito = mediaContenedoresTipoDistrito()
-            graficoTotalContenedoresPorDistrito()
+            graficoTotalContenedoresPorDistrito(rutaDestino)
             mediaToneladasAnualesTipoBasuraDistrito = mediaToneladasAnualesTipoBasuraDistrito()
-            graficoToneladasMensualesPorDistrito()
+            graficoToneladasMensualesPorDistrito(rutaDestino)
             maxminavgDesviacionToneladasDistrito = maxMinMediaDesviacionToneladasAnualesTipoPorDistrito()
             sumRecogidoAnualDistrito = sumaRecogidoAnualPorDistrito()
             cantidadRecogidaTipoPorDistrito = cantidadTipoPorDistrito()

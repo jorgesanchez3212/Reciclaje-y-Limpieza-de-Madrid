@@ -32,11 +32,11 @@ class Html(
             <li><h5>Número de contenedores de cada tipo que hay en cada distrito: $numContenedoresDistrito</h5></li>
             <li><h5>Media de contenedores de cada tipo que hay: $mediaContenedoresDistrito</h5></li>
             <li><h5>Gráfico con el total de contenedores por distrito:</h5></li>
-            <img src="lets-plot-images/graficaToneladasResiduoDistrito.png">
+            <img src="graficoTotalContenedoresPorDistrito.png/totalContenedores.png">
             <li><h5>Media de toneladas anuales de recogidas por cada tipo de basura agrupadas por
             distrito: $mediaToneladasAnualesTipoBasuraDistrito</h5></li>
             <li><h5>Gráfico de media de toneladas mensuales de recogida de basura por distrito:</h5></li>
-            <img src="lets-plot-images/graficoToneladasDistrito.png">
+            <img src="graficoToneladasMensualesPorDistrito.png/graficoToneladasMensualesPorDistrito.png">
             <li><h5>Máximo, mínimo , media y desviación de toneladas anuales de recogidas por cada tipo
             de basura agrupadas por distrito: $maxminavgDesviacionToneladasDistrito</h5></li>
             <li><h5>Suma de todo lo recogido en un año por distrito: $sumRecogidoAnualDistrito</h5></li>
