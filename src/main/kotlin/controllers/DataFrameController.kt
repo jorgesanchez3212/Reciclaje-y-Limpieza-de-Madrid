@@ -201,13 +201,13 @@ class DataFrameController(
 
 
     /**
-     * Total de toneladas recogidas en ese distrito
+     * Total de toneladas recogidas en ese distrito por residuo
      *
      * @param distrito
      * @return String
      */
     fun totalToneladasRecogidasDistrito(distrito: String): String{
-        return re.groupBy("nom_ditrito")
+        return re.groupBy("nom_ditrito","residuos")
             .filter { it.nom_ditrito.uppercase()==distrito.uppercase() }
             .aggregate { sum("toneladas") into "total_toneladas" }
             .html()
