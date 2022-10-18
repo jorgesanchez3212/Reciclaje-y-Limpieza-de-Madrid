@@ -1,6 +1,7 @@
 package models
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import nl.adaptivity.xmlutil.serialization.XML
 import nl.adaptivity.xmlutil.serialization.XmlElement
@@ -10,9 +11,9 @@ import java.util.*
 @Serializable
 class Bitacora(
     @XmlElement (true)
-    val id: String = UUID.randomUUID().toString(),
+    val id: String ,
     @XmlElement(true)
-    val instante: String = LocalDateTime.now().toString(),
+    val instante: String ,
     @XmlElement(true)
     val opcionElegida: String,
     @XmlElement(true)
@@ -30,6 +31,12 @@ class Bitacora(
     private fun bitacora(){
         val xml = XML { indentString = " " }
         val fichero = File(path + File.separator + "bitacora.xml")
-        fichero.writeText(xml.encodeToString(this))
+        if(fichero.exists()){
+            fichero.writeText(xml.encodeToString(this))
+        }else{
+            fichero.createNewFile()
+            fichero.writeText(xml.encodeToString(this))
+        }
+
     }
 }

@@ -21,7 +21,6 @@ fun main(args: Array<String>) {
         val rutaOrigen = args[2]
         val rutaFinal = args[3]
         val distrito = args[1]
-    println("hola")
         ResiduosController().resumenDistrito(distrito,rutaOrigen,rutaFinal)
     }
 }
