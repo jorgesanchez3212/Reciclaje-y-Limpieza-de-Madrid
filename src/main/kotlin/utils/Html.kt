@@ -2,17 +2,17 @@ package utils
 
 class Html(
     val numContenedoresDistrito: String,
-            val mediaContenedoresDistrito:String,
-            val mediaToneladasAnualesTipoBasuraDistrito: String,
-            val maxminavgDesviacionToneladasDistrito: String,
-            val sumRecogidoAnualDistrito: String,
-            val cantidadRecogidaTipoPorDistrito: String,
-            val tiempoGeneracion: String,
-            val distrito: String,
-            val fechaHoras: String,
-            val totalResiduos: String
+    val mediaContenedoresDistrito:String,
+    val mediaToneladasAnualesTipoBasuraDistrito: String,
+    val maxminavgDesviacionToneladasDistrito: String,
+    val sumRecogidoAnualDistrito: String,
+    val cantidadRecogidaTipoPorDistrito: String,
+    val tiempoGeneracion: String,
+    val distrito: String,
+    val fechaHoras: String,
+    val totalResiduos: String
 
-           ) {
+) {
 
     fun directorioHtml(): String{
         return """" <!DOCTYPE html>
@@ -25,7 +25,7 @@ class Html(
             <div class="id">
             <h1>Resumen de recogidas de basura y reciclaje de Madrid</h1>
             </div>
-            <div class="bodyy">
+            <div class="body">
             <ul>
             <li><h3> Fecha de generación: "$tiempoGeneracion"</h3></li>
             <li><h3>Autores: Jorge Sánchez Berrocoso y Alfredo Maldonado</h3></li>
@@ -69,10 +69,10 @@ class Html(
             <il><h5>Número de contenedores de cada tipo que hay en este distrito: $numContenedoresDistrito </h5></il>
             <il><h5>Total de toneladas recogidas en ese distrito por residuo: $totalResiduos</h5></il>
             <il><h5>Gráfico con el total de toneladas por residuo en ese distrito:</h5></il>
-           <img src="">
+           <img src="graficaTotalToneladasPorResiduoDistrito.png/graficaTotalToneladasPorResiduoDistrito.png">
            <il><h5>Máximo, mínimo , media y desviación por mes por residuo en dicho distrito:$maxminavgDesviacionToneladasDistrito</h5></il>
            <il><h5>Gráfica del máximo, mínimo y media por meses en dicho distrito:</h5></il>
-           <img src="">
+           <img src="graficaMaxMinMediaMesesDistrito.png/graficaMaxMinMediaMesesDistrito.png">
            <il><h5>Tiempo de generación del mismo en milisegundos:$tiempoGeneracion</h5></il>
         </ul>
            </div>

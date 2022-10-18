@@ -35,8 +35,8 @@ class DataFrameController(
 ) {
 
 
-    private var co : DataFrame<Contenedores>
-    private var re : DataFrame<Residuos>
+    private var co: DataFrame<Contenedores>
+    private var re: DataFrame<Residuos>
 
 
     init {
@@ -46,8 +46,11 @@ class DataFrameController(
         co.cast<Contenedores>()
     }
 
-
-
+    //Saber si el distrito existe o no
+    fun distritoExiste(distrito: String): Boolean {
+        var f = distrito.uppercase() in co.values()
+        return f
+    }
     //Resumen
 
     /**
@@ -55,9 +58,9 @@ class DataFrameController(
      *
      * @return String
      */
-    fun numeroContenedoresTipoDistrito() : String{
+    fun numeroContenedoresTipoDistrito(): String {
 
-        return co.groupBy("distrito","tipoContenedor")
+        return co.groupBy("distrito", "tipoContenedor")
             .aggregate { count() into "contenedores" }
             .sortBy("distrito").html()
 
@@ -68,9 +71,9 @@ class DataFrameController(
      *
      * @return String
      */
-    fun mediaContenedoresTipoDistrito() : String{
-        return co.groupBy("distrito","tipoContenedor")
-            .aggregate { meanOf{ sum("cantidad") } into "media" }
+    fun mediaContenedoresTipoDistrito(): String {
+        return co.groupBy("distrito", "tipoContenedor")
+            .aggregate { meanOf { sum("cantidad") } into "media" }
             .sortBy("distrito")
             .html()
     }
@@ -79,24 +82,28 @@ class DataFrameController(
      * Gráfico con el total de contenedores por distrito
      *
      */
-    fun graficoTotalContenedoresPorDistrito(rutaDestino: String){
-        var a =   co.groupBy("distrito","tipoContenedor")
+    fun graficoTotalContenedoresPorDistrito(rutaDestino: String) {
+        var a = co.groupBy("distrito", "tipoContenedor")
             .aggregate { count() into "total" }
             .sortBy("distrito")
             .toMap()
 
-        var fig: Plot = letsPlot ( data = a) +geomBar(
+        var fig: Plot = letsPlot(data = a) + geomBar(
             stat = Stat.identity,
             fill = Color.BLUE
-        ){
+        ) {
             x = "distrito"
-            y="total"
+            y = "total"
         } + labs(
             x = "Distrito",
             y = "total",
             title = "total de contenedores por distrito"
         )
-        ggsave(fig,"totalContenedores.png" , path = rutaDestino+ File.separator+"graficoTotalContenedoresPorDistrito.png")
+        ggsave(
+            fig,
+            "totalContenedores.png",
+            path = rutaDestino + File.separator + "graficoTotalContenedoresPorDistrito.png"
+        )
     }
 
     /**
@@ -104,8 +111,8 @@ class DataFrameController(
      *
      * @return String
      */
-    fun mediaToneladasAnualesTipoBasuraDistrito(): String{
-        return   re.groupBy("nom_ditrito","anio","residuos")
+    fun mediaToneladasAnualesTipoBasuraDistrito(): String {
+        return re.groupBy("nom_ditrito", "anio", "residuos")
             .aggregate {
                 mean("toneladas") into "Media"
             }.sortBy("nom_ditrito")
@@ -117,26 +124,30 @@ class DataFrameController(
      * Gráfico de media de toneladas mensuales de recogida de basura por distrito
      *
      */
-    fun graficoToneladasMensualesPorDistrito(rutaDestino:String){
-        var a = re.groupBy("nom_ditrito","mes")
-            .aggregate { mean("toneladas") into  "media" }
+    fun graficoToneladasMensualesPorDistrito(rutaDestino: String) {
+        var a = re.groupBy("nom_ditrito", "mes")
+            .aggregate { mean("toneladas") into "media" }
             .sortBy("nom_ditrito")
             .toMap()
 
-        var fig: Plot = letsPlot  (data = a) + geomBar(
+        var fig: Plot = letsPlot(data = a) + geomBar(
             stat = Stat.identity,
             alpha = 0.8,
             fill = Color.GREEN
-        ){
-            x= "nom_ditrito"
+        ) {
+            x = "nom_ditrito"
             y = "media"
-        }+ labs(
-            x= "nom_ditrito",
+        } + labs(
+            x = "nom_ditrito",
             y = "media",
             title = "media de toneladas mensuales por mes "
         )
 
-        ggsave(fig,"graficoToneladasMensualesPorDistrito.png",path = rutaDestino+ File.separator+"graficoToneladasMensualesPorDistrito.png")
+        ggsave(
+            fig,
+            "graficoToneladasMensualesPorDistrito.png",
+            path = rutaDestino + File.separator + "graficoToneladasMensualesPorDistrito.png"
+        )
     }
 
 
@@ -145,8 +156,8 @@ class DataFrameController(
      *
      * @return String
      */
-    fun maxMinMediaDesviacionToneladasAnualesTipoPorDistrito() : String{
-        return re.groupBy("nom_ditrito","residuos","anio")
+    fun maxMinMediaDesviacionToneladasAnualesTipoPorDistrito(): String {
+        return re.groupBy("nom_ditrito", "residuos", "anio")
             .aggregate {
                 max("toneladas") into "Maximo"
                 min("toneladas") into "Minimo"
@@ -163,7 +174,7 @@ class DataFrameController(
      *
      * @return String
      */
-    fun sumaRecogidoAnualPorDistrito():String{
+    fun sumaRecogidoAnualPorDistrito(): String {
         return re.groupBy("nom_ditrito", "anio")
             .aggregate { sum("toneladas") into "recogido" }
             .sortBy("nom_ditrito")
@@ -176,13 +187,12 @@ class DataFrameController(
      *
      * @return String
      */
-    fun cantidadTipoPorDistrito():String{
-        return re.groupBy("nom_ditrito","residuos")
+    fun cantidadTipoPorDistrito(): String {
+        return re.groupBy("nom_ditrito", "residuos")
             .aggregate { sum("toneladas") into "cantidad recogida" }
             .sortBy("nom_ditrito")
             .html()
     }
-
 
 
     //Resumen Distrito
@@ -193,9 +203,9 @@ class DataFrameController(
      * @return String
      */
 
-    fun numeroContenedoresTipoPorDistrito(distrito: String): String{
-        return co.groupBy("distrito","tipoContenedor")
-            .filter { it.distrito.uppercase() == distrito.uppercase() }
+    fun numeroContenedoresTipoPorDistrito(distrito: String): String {
+        return co.groupBy("distrito", "tipoContenedor")
+            .filter { it["distrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { count() into "numero_contenedores" }
             .html()
     }
@@ -207,9 +217,9 @@ class DataFrameController(
      * @param distrito
      * @return String
      */
-    fun totalToneladasRecogidasDistrito(distrito: String): String{
-        return re.groupBy("nom_ditrito","residuos")
-            .filter { it.nom_ditrito.uppercase()==distrito.uppercase() }
+    fun totalToneladasRecogidasDistrito(distrito: String): String {
+        return re.groupBy("nom_ditrito", "residuos")
+            .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { sum("toneladas") into "total_toneladas" }
             .html()
     }
@@ -219,27 +229,31 @@ class DataFrameController(
      * Gráfico con el total de toneladas por residuo en ese distrito
      *
      */
-    fun graficaTotalToneladasPorResiduoDistrito(distrito:String) {
+    fun graficaTotalToneladasPorResiduoDistrito(rutaDestino: String, distrito: String) {
 
-        var a = re.groupBy("nom_ditrito","residuos")
-            .filter { it.nom_ditrito.uppercase()==distrito.uppercase() }
+        var a = re.groupBy("nom_ditrito", "residuos")
+            .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { sum("toneladas") into "total" }
             .toMap()
 
-        var fig: Plot = letsPlot(data=a) + geomBar(
-            stat=Stat.identity,
-            alpha= 0.8,
-            fill= Color.BLACK
-        ){
-            x="residuos"
-            y="total"
-        }+ labs(
-            x="residuo",
-            y="toneladas",
-            title="Gráfico con el total de toneladas por residuo en ese distrito"
+        var fig: Plot = letsPlot(data = a) + geomBar(
+            stat = Stat.identity,
+            alpha = 0.8,
+            fill = Color.BLACK
+        ) {
+            x = "residuos"
+            y = "total"
+        } + labs(
+            x = "residuos",
+            y = "total",
+            title = "Gráfico con el total de toneladas por residuo en ese distrito"
         )
 
-        ggsave(fig,"graficaTotalToneladasPorResiduoDistrito.png",path ="src/main/resources")
+        ggsave(
+            fig,
+            "graficaTotalToneladasPorResiduoDistrito.png",
+            path = rutaDestino + File.separator + "graficaTotalToneladasPorResiduoDistrito.png"
+        )
 
     }
 
@@ -250,9 +264,9 @@ class DataFrameController(
      * @param distrito
      * @return String
      */
-    fun maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito: String):String{
-        return re.groupBy("nom_ditrito","mes","residuos")
-            .filter{it.nom_ditrito.uppercase()==distrito.uppercase()}
+    fun maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito: String): String {
+        return re.groupBy("nom_ditrito", "mes", "residuos")
+            .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate {
                 max("toneladas") into "max"
                 min("toneladas") into "min"
@@ -267,54 +281,58 @@ class DataFrameController(
      * Gráfica del máximo, mínimo y media por meses en dicho distrito
      *
      */
-    fun graficaMaxMinMediaMesesDistrito(distrito:String){
-        var a = re.groupBy("nom_ditrito","mes")
-            .filter{it.nom_ditrito.uppercase()==distrito.uppercase()}
+    fun graficaMaxMinMediaMesesDistrito(rutaDestino: String, distrito: String) {
+        var a = re.groupBy("nom_ditrito", "mes")
+            .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate {
                 max("toneladas") into "max"
                 min("toneladas") into "min"
                 mean("toneladas") into "media"
             }.toMap()
 
-        var fig:Plot= letsPlot(data=a)+geomBar(
+        var fig: Plot = letsPlot(data = a) + geomBar(
             stat = Stat.identity,
             alpha = 0.8,
             fill = Color.BLACK
-        ){
+        ) {
             x = "mes"
             y = "max"
-        }+geomBar(
+        } + geomBar(
             stat = Stat.identity,
             alpha = 0.8,
             fill = Color.RED
-        ){
+        ) {
             x = "mes"
             y = "min"
-        }+geomBar(
+        } + geomBar(
             stat = Stat.identity,
             alpha = 0.8,
             fill = Color.BLUE
-        ){
+        ) {
             x = "mes"
             y = "media"
-        }+labs(
-            x="Mes",
-            y="Max",
+        } + labs(
+            x = "Mes",
+            y = "Max",
             title = "Gráfica del máximo, mínimo y media por meses en dicho distrito"
         )
 
-        ggsave(fig,"graficaMaxMinMediaMesesDistrito.png",path="src/main/resources")
+        ggsave(
+            fig,
+            "graficaMaxMinMediaMesesDistrito.png",
+            path = rutaDestino + File.separator + "graficaMaxMinMediaMesesDistrito.png"
+        )
 
     }
 
 
-    fun resumen(rutaDestino: String) : String{
-        var numContenedoresDistrito : String
+    fun resumen(rutaDestino: String): String {
+        var numContenedoresDistrito: String
         var mediaContenedorDistrito: String
         var mediaToneladasAnualesTipoBasuraDistrito: String
         var maxminavgDesviacionToneladasDistrito: String
         var sumRecogidoAnualDistrito: String
-        var cantidadRecogidaTipoPorDistrito : String
+        var cantidadRecogidaTipoPorDistrito: String
         var total: String = totalToneladasRecogidasDistrito("Barajas")
 
 
@@ -329,7 +347,7 @@ class DataFrameController(
             cantidadRecogidaTipoPorDistrito = cantidadTipoPorDistrito()
         }
 
-        var resumenHtml =  Html(
+        var resumenHtml = Html(
             numContenedoresDistrito,
             mediaContenedorDistrito,
             mediaToneladasAnualesTipoBasuraDistrito,
@@ -345,25 +363,25 @@ class DataFrameController(
 
     }
 
-    fun resumenDistrito(distrito:String) : String{
-        var numContenedoresDistrito : String
+    fun resumenDistrito(rutaDestino: String, distrito: String): String {
+        var numContenedoresDistrito: String
         var mediaContenedorDistrito: String = mediaContenedoresTipoDistrito()
         var mediaToneladasAnualesTipoBasuraDistrito: String = mediaToneladasAnualesTipoBasuraDistrito()
         var maxminavgDesviacionToneladasDistrito: String
         var sumRecogidoAnualDistrito: String = sumaRecogidoAnualPorDistrito()
-        var cantidadRecogidaTipoPorDistrito : String = cantidadTipoPorDistrito()
+        var cantidadRecogidaTipoPorDistrito: String = cantidadTipoPorDistrito()
         var total: String
 
 
         var tiempoGeneracion = measureTimeMillis {
             numContenedoresDistrito = numeroContenedoresTipoPorDistrito(distrito)
             total = totalToneladasRecogidasDistrito(distrito)
-            graficaTotalToneladasPorResiduoDistrito(distrito)
+            graficaTotalToneladasPorResiduoDistrito(rutaDestino, distrito)
             maxminavgDesviacionToneladasDistrito = maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito)
-            graficaMaxMinMediaMesesDistrito(distrito)
+            graficaMaxMinMediaMesesDistrito(rutaDestino, distrito)
         }
 
-        var resumenHtml =  Html(
+        var resumenHtml = Html(
             numContenedoresDistrito,
             mediaContenedorDistrito,
             mediaToneladasAnualesTipoBasuraDistrito,
@@ -378,7 +396,4 @@ class DataFrameController(
         return resumenHtml.distrito()
 
     }
-
-
-
 }

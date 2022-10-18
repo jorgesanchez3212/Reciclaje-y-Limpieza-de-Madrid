@@ -1,8 +1,6 @@
 package models
 
 import org.jetbrains.kotlinx.dataframe.annotations.DataSchema
-import utils.Utils
-import java.io.File
 
 
 @DataSchema

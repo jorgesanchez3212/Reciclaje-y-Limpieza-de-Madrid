@@ -1,6 +1,5 @@
 package mappers
 
-import exceptions.FormatException
 import dto.ResiduosDTO
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -38,27 +37,31 @@ class MapperResiduos {
     fun leerCSV(ruta: String): List<ResiduosDTO> {
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".csv")) {
-            return fichero.readLines()
-                .drop(1)
-                .map { residuos -> residuos.split(";") }
-                .map {
-                    it.map { it.trim() }
-                    ResiduosDTO(
-                        anio = it[0].toIntOrNull(),
-                        mes = it[1],
-                        lote = it[2].toIntOrNull(),
-                        residuos = it[3],
-                        distrito = it[4].toIntOrNull(),
-                        nom_ditrito = it[5],
-                        toneladas = it[6].replace(",", ".").toFloat()
-                    )
-                }
-        }else {
+            if(fichero.readLines().take(1).first().split(";").size == 7) {
+                return fichero.readLines()
+                    .drop(1)
+                    .map { residuos -> residuos.split(";") }
+                    .map {
+                        it.map { it.trim() }
+                        ResiduosDTO(
+                            anio = it[0].toIntOrNull(),
+                            mes = it[1],
+                            lote = it[2].toIntOrNull(),
+                            residuos = it[3],
+                            distrito = it[4].toIntOrNull(),
+                            nom_ditrito = it[5],
+                            toneladas = it[6].replace(",", ".").toFloat()
+                        )
+                    }
+            }
 
-            throw FormatException("El formato no es correcto")
+            throw Exception("La cabecera no es igual")
         }
 
+        throw Exception("El formato no es correcto")
     }
+
+
 
     fun leerJSON(ruta:String): List<ResiduosDTO>{
         val fichero = File(ruta)
@@ -66,7 +69,7 @@ class MapperResiduos {
             val json = Json { prettyPrint = true }
             return Json.decodeFromString(File(ruta).readText())
         }else {
-            throw FormatException("El formato no es correcto")
+            throw Exception("El formato no es correcto")
         }
     }
 
@@ -76,7 +79,7 @@ class MapperResiduos {
             val xml = XML { indentString = " " }
             return XML.decodeFromString(fichero.readText())
         }else {
-            throw FormatException("El formato no es correcto")
+            throw Exception("El formato no es correcto")
         }
     }
 
@@ -86,7 +89,7 @@ class MapperResiduos {
     }
 
     fun exportarCSV(ruta: String, residuos: List<ResiduosDTO>){
-        val fichero = File(ruta+File.separator+"residuos.csv")
+        val fichero = File(ruta+File.separator+"modelo_residuos_2021.csv")
         fichero.writeText("anio;mes;lote;residuos;distrito;nom_ditrito;toneladas\n")
         residuos.forEach { fichero.appendText("\n${it.anio};${it.mes};" +
                 "${it.lote};${it.residuos};${it.distrito};${it.lote};${it.distrito};${it.nom_ditrito};" +
@@ -95,14 +98,14 @@ class MapperResiduos {
 
     fun exportarJSON(ruta: String, residuos: List<ResiduosDTO>) {
         val json= Json { prettyPrint=true }
-        val fichero=File(ruta+File.separator+"ficheroR.json")
+        val fichero=File(ruta+File.separator+"modelo_residuos_2021.json")
         fichero.writeText(json.encodeToString(residuos))
     }
 
 
     fun exportarXML(ruta: String, residuos:List<ResiduosDTO>){
         val xml= XML{indentString=" "}
-        val fichero=File(ruta+File.separator+"ficheroR.xml")
+        val fichero=File(ruta+File.separator+"modelo_residuos_2021.xml")
         fichero.writeText(xml.encodeToString(residuos))
     }
 }
