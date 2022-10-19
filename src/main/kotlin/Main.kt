@@ -1,10 +1,7 @@
 import controllers.ResiduosController
 //Ejemplo de prueba "resumen" "Barajas" "C:\GRADO SUPERIOR\SEGUNDO\Ingles\parser" "C:\GRADO SUPERIOR\SEGUNDO\Ingles\parser_destino"
 fun main(args: Array<String>) {
-    if (args.size < 2 || args.size >= 5) {
-        throw Exception("Argumentos Incorrectos")
-    }
-    val argMax = args.size
+
     if (args[0].lowercase() == "parser") {
         val rutaOrigen = args[1]
         val rutaFinal = args[2]
@@ -22,6 +19,8 @@ fun main(args: Array<String>) {
         val rutaFinal = args[3]
         val distrito = args[1]
         ResiduosController().resumenDistrito(distrito,rutaOrigen,rutaFinal)
+    }else{
+        throw Exception("Argumentos Incorrectos")
     }
 }
 
