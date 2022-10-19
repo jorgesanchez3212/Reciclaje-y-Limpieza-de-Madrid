@@ -8,12 +8,12 @@
 ## Descripción
 
 Nos ha contratado el Ayuntamiento de Madrid para que hagamos un estudio del análisis de
-limpieza y gestión de basuras que se hace en la ciudad. Para ello hemos creado esta aplicacin.
+limpieza y gestión de basuras que se hace en la ciudad. Para ello hemos creado esta aplicación.
 
-Nuestra aplicacion funciona de forma que le debemos pasar 3, 4 argumentos, en función de la opción elegida.
+Nuestra aplicación funciona de forma que le debemos pasar 3, 4 argumentos, en función de la opción elegida.
 
 Si la opción es parser directorio_origen directorio_destino: debe tomar los ficheros csv
-del directorio origen y los trasformalos en JSON y XML en el directorio destino. En dicho
+del directorio origen y los trasforma en JSON y XML en el directorio destino. En dicho
 directorio destino deberán estar las tres versiones: CSV, JSON y XML.
 
 Si la opción es resumen directorio_origen directorio_destino debe tomar la información
