@@ -1,5 +1,7 @@
 package utils
 
+import java.io.File
+
 class Html(
     val numContenedoresDistrito: String,
     val mediaContenedoresDistrito:String,
@@ -14,18 +16,19 @@ class Html(
 
 ) {
 
-    fun directorioHtml(): String{
+    fun directorioHtml(path: String): String{
+        var ruta = path+ File.separator+"style.css"
         return """" <!DOCTYPE html>
             <html lang="en">
             <head>
                 <title>Resumen</title>
-                <link rel="stylesheet" href="resources/style.css">
+                <link rel="stylesheet" href="$ruta">
             </head>
             <body >
             <div class="id">
             <h1>Resumen de recogidas de basura y reciclaje de Madrid</h1>
             </div>
-            <div class="body">
+            <div class="bodyy">
             <ul>
             <li><h3> Fecha de generación: "$tiempoGeneracion"</h3></li>
             <li><h3>Autores: Jorge Sánchez Berrocoso y Alfredo Maldonado</h3></li>
@@ -51,12 +54,13 @@ class Html(
             """.trimIndent()
     }
 
-    fun distrito(): String{
-        return """" <!DOCTYPE html>
+    fun distrito(path:String): String{
+        var ruta = path+ File.separator+"style.css"
+        return """ <!DOCTYPE html>
             <html lang="en">
             <head>
                 <title>Resumen</title>
-                <link rel="stylesheet" href="resources/style.css">
+                <link rel="stylesheet" href="$ruta">
             </head>
             <body>
             <div class="id">
@@ -82,6 +86,8 @@ class Html(
             
             """.trimIndent()
     }
+
+
 
 
 }

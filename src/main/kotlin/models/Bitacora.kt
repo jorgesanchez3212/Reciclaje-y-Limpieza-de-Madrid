@@ -24,15 +24,12 @@ class Bitacora(
     val path: String
 ) {
 
-    init {
-        bitacora()
-    }
 
-    private fun bitacora(){
+     fun bitacora(){
         val xml = XML { indentString = " " }
         val fichero = File(path + File.separator + "bitacora.xml")
         if(fichero.exists()){
-            fichero.writeText(xml.encodeToString(this))
+            fichero.appendText(xml.encodeToString(this))
         }else{
             fichero.createNewFile()
             fichero.writeText(xml.encodeToString(this))

@@ -359,7 +359,7 @@ class DataFrameController(
             LocalDateTime.now().toString(),
             total
         )
-        return resumenHtml.directorioHtml()
+        return resumenHtml.directorioHtml(rutaDestino)
 
     }
 
@@ -393,7 +393,35 @@ class DataFrameController(
             LocalDateTime.now().toString(),
             total
         )
-        return resumenHtml.distrito()
+        return resumenHtml.distrito(rutaDestino)
+
+    }
+
+    fun css() : String{
+        return """.id{
+    background-color: rgb(17, 14, 204);
+    width: 1187px;
+    height: 50px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 15px;
+    color: aliceblue;
+    padding:55px;
+    border: 2px solid black;
+
+
+}
+
+.bodyy{
+    background-color: rgb(218, 253, 18);  
+    width: 1287px;
+    height: 6200px;
+    padding-left: 8px;
+    padding-top: 8px;
+    float: left;
+    border: 2px solid black;
+    
+}""".trimIndent()
 
     }
 }

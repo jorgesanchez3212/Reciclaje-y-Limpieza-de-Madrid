@@ -3,6 +3,7 @@ package controllers
 import mappers.MapperContenedor
 import mappers.MapperResiduos
 import models.Bitacora
+import utils.Html
 import java.io.File
 import java.time.LocalDateTime
 import java.util.*
@@ -38,7 +39,7 @@ class ResiduosController {
             true,
             tiempo,
             directorioDestino
-        )
+        ).bitacora()
     }
 
     fun resumen(directorioOrigen: String, directorioDestino: String) {
@@ -67,6 +68,17 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
+
+
             } else if (residuosJson.exists()) {
                 val b = residuosMapper.leerJSON(directorioOrigen + File.separator + "modelo_residuos_2021.json")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -75,6 +87,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             } else if (residuosXml.exists()) {
                 val b = residuosMapper.leerXML(directorioOrigen + File.separator + "modelo_residuos_2021.xml")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -83,6 +104,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             }
 
 
@@ -97,6 +127,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             } else if (residuosJson.exists()) {
                 val b = residuosMapper.leerJSON(directorioOrigen + File.separator + "modelo_residuos_2021.json")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -105,6 +144,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             } else if (residuosXml.exists()) {
                 val b = residuosMapper.leerXML(directorioOrigen + File.separator + "modelo_residuos_2021.xml")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -113,6 +161,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             }
 
 
@@ -127,6 +184,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             } else if (residuosJson.exists()) {
                 val b = residuosMapper.leerJSON(directorioOrigen + File.separator + "modelo_residuos_2021.json")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -135,6 +201,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             } else if (residuosXml.exists()) {
                 val b = residuosMapper.leerXML(directorioOrigen + File.separator + "modelo_residuos_2021.xml")
                     .map { residuosMapper.toResiduos(it) }.toList()
@@ -143,6 +218,15 @@ class ResiduosController {
                 val fichero = File(directorioDestino + File.separator + "resumen.html")
                 fichero.createNewFile()
                 fichero.writeText(c)
+
+                val ficheroCSS = File(directorioDestino + File.separator + "style.css")
+                if (ficheroCSS.exists()){
+
+                }else{
+                    val cc = df.css()
+                    ficheroCSS.createNewFile()
+                    ficheroCSS.writeText(cc)
+                }
             }
 
             } else {
@@ -161,7 +245,7 @@ class ResiduosController {
             true,
             tiempo,
             directorioDestino
-        )
+        ).bitacora()
     }
 
 
@@ -346,6 +430,6 @@ class ResiduosController {
             true,
             tiempo,
             directorioDestino
-        )
+        ).bitacora()
     }
 }
