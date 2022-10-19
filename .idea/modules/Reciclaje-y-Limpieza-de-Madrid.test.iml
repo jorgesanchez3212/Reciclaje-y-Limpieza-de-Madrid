@@ -15,7 +15,6 @@
             <stringArg name="classpath">
               <args>
                 <arg>$MODULE_DIR$/../../build/classes/kotlin/main</arg>
-                <arg>$MODULE_DIR$/../../build/resources/main</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlinx/dataframe/0.8.1/81b8e855a7098b6320907bd2dea7805d23e3d42e/dataframe-0.8.1.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-kotlin-jvm/3.2.0/89031f91c7f82807b5b1384d5f5914155c1320a2/plot-api-jvm-3.2.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.lets-plot/lets-plot-common/2.3.0/62501fe2e15a57e1825a45e982a1dc07e68e39e2/lets-plot-common-2.3.0.jar</arg>
@@ -135,7 +134,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <output-test url="file://$MODULE_DIR$/../../build/classes/java/test" />
+    <output-test url="file://$MODULE_DIR$/../../build/classes/kotlin/test" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/kotlin" isTestSource="true" />
