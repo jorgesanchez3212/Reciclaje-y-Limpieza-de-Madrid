@@ -2,6 +2,22 @@ package utils
 
 import java.io.File
 
+/**
+ * Html
+ * @author Jorge y Alfredo
+ * @since 19/10/2022
+ * @property numContenedoresDistrito
+ * @property mediaContenedoresDistrito
+ * @property mediaToneladasAnualesTipoBasuraDistrito
+ * @property maxminavgDesviacionToneladasDistrito
+ * @property sumRecogidoAnualDistrito
+ * @property cantidadRecogidaTipoPorDistrito
+ * @property tiempoGeneracion
+ * @property distrito
+ * @property fechaHoras
+ * @property totalResiduos
+ * @constructor Create empty Html
+ */
 class Html(
     val numContenedoresDistrito: String,
     val mediaContenedoresDistrito:String,
@@ -16,6 +32,12 @@ class Html(
 
 ) {
 
+    /**
+     * Directorio html
+     *
+     * @param path
+     * @return
+     */
     fun directorioHtml(path: String): String{
         var ruta = path+ File.separator+"style.css"
         return """" <!DOCTYPE html>
@@ -54,6 +76,12 @@ class Html(
             """.trimIndent()
     }
 
+    /**
+     * Distrito
+     *
+     * @param path
+     * @return
+     */
     fun distrito(path:String): String{
         var ruta = path+ File.separator+"style.css"
         return """ <!DOCTYPE html>

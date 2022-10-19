@@ -3,29 +3,47 @@ package controllers
 import mappers.MapperContenedor
 import mappers.MapperResiduos
 import models.Bitacora
+import mu.KotlinLogging
 import utils.Html
 import java.io.File
 import java.time.LocalDateTime
 import java.util.*
 import kotlin.system.measureTimeMillis
 
+/**
+ * Residuos controller
+ * @author Jorge y Alfredo
+ * @since 19/10/2022
+ */
 class ResiduosController {
 
+    /**
+     * Parser
+     *
+     * @param directorioOrigen
+     * @param directorioDestino
+     */
 
+    val logger = KotlinLogging.logger{}
     fun parser(directorioOrigen: String, directorioDestino: String) {
         val contenedorMapper = MapperContenedor()
         val residuosMapper = MapperResiduos()
-
+        logger.debug { "Se ejecuta la opcion parser" }
         var tiempo = measureTimeMillis {
             var a = residuosMapper.leerCSV(directorioOrigen + File.separator + "modelo_residuos_2021.csv")
             var b = contenedorMapper.leerCSV(directorioOrigen + File.separator + "contenedores_varios.csv")
-
+            logger.debug{"Copia el csv de contenedores en el directorio destino"}
             contenedorMapper.copiarCSV(directorioOrigen, directorioDestino)
+            logger.debug{"Exporta el json de contenedores en el directorio destino"}
             contenedorMapper.exportarJSON(directorioDestino, b)
+            logger.debug{"Exporta el xml de contenedores en el directorio destino"}
             contenedorMapper.exportarXML(directorioDestino, b)
-
+            logger.debug{"Copia el csv de residuos en el directorio destino"}
             residuosMapper.copiarCSV(directorioOrigen, directorioDestino)
+
+            logger.debug{"Exporta el json de residuos en el directorio destino"}
             residuosMapper.exportarJSON(directorioDestino, a)
+            logger.debug{"Exporta el xml de residuos en el directorio destino"}
             residuosMapper.exportarXML(directorioDestino, a)
         }
 
@@ -40,12 +58,20 @@ class ResiduosController {
             tiempo,
             directorioDestino
         ).bitacora()
+
+        logger.debug{"Crea el bitacora"}
     }
 
+    /**
+     * Resumen
+     *
+     * @param directorioOrigen
+     * @param directorioDestino
+     */
     fun resumen(directorioOrigen: String, directorioDestino: String) {
         val contenedorMapper = MapperContenedor()
         val residuosMapper = MapperResiduos()
-
+        logger.debug { "Se ejecuta la opcion resumen" }
         var tiempo = measureTimeMillis {
         val contenedoresCSV = File(directorioOrigen + File.separator + "contenedores_varios.csv")
         val contendorJSON = File(directorioOrigen + File.separator + "contenedores_varios.json")
@@ -246,13 +272,21 @@ class ResiduosController {
             tiempo,
             directorioDestino
         ).bitacora()
+        logger.debug{"Crea el bitacora"}
     }
 
 
-
+    /**
+     * Resumen distrito
+     *
+     * @param distrito
+     * @param directorioOrigen
+     * @param directorioDestino
+     */
     fun resumenDistrito(distrito: String, directorioOrigen: String, directorioDestino: String) {
         val contenedorMapper = MapperContenedor()
         val residuosMapper = MapperResiduos()
+        logger.debug { "Se ejecuta la opcion resumen distrito"}
 
         var tiempo= measureTimeMillis {
             val contenedoresCSV = File(directorioOrigen + File.separator + "contenedores_varios.csv")
@@ -431,5 +465,6 @@ class ResiduosController {
             tiempo,
             directorioDestino
         ).bitacora()
+        logger.debug { "Se crea el Bitacora" }
     }
 }

@@ -2,6 +2,27 @@ package dto
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Contenedor d t o
+ * @author Jorge y Alfredo
+ * @since 19/10/2022
+ * @property codInterno
+ * @property tipoContenedor
+ * @property modelo
+ * @property descripcionModelo
+ * @property cantidad
+ * @property lote
+ * @property distrito
+ * @property barrio
+ * @property tipoVia
+ * @property nombre
+ * @property numero
+ * @property cordenadax
+ * @property cordenaday
+ * @property longitud
+ * @property latitud
+ * @property direccion
+ */
 @Serializable
 data class ContenedorDTO(val codInterno: Int,
                     val tipoContenedor: String,

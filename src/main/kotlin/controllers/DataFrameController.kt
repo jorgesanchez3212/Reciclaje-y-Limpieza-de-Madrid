@@ -11,6 +11,7 @@ import jetbrains.letsPlot.label.xlab
 import jetbrains.letsPlot.label.ylab
 import jetbrains.letsPlot.letsPlot
 import models.*
+import mu.KotlinLogging
 import org.jetbrains.kotlinx.dataframe.DataFrame
 import org.jetbrains.kotlinx.dataframe.api.*
 import org.jetbrains.kotlinx.dataframe.io.html
@@ -24,7 +25,8 @@ import kotlin.system.measureTimeMillis
 
 /**
  * Data frame Controller
- *
+ *@author Jorge y Alfredo
+ * @since 19/10/2022
  * @property residuos
  * @property contenedores
  */
@@ -34,7 +36,7 @@ class DataFrameController(
     val contenedores: List<Contenedores>
 ) {
 
-
+ val logger = KotlinLogging.logger{}
     private var co: DataFrame<Contenedores>
     private var re: DataFrame<Residuos>
 
@@ -46,8 +48,9 @@ class DataFrameController(
         co.cast<Contenedores>()
     }
 
-    //Saber si el distrito existe o no
+
     fun distritoExiste(distrito: String): Boolean {
+        logger.debug { "Comprobacion si el distrito existe" }
         var f = distrito.uppercase() in co.values()
         return f
     }
@@ -59,7 +62,7 @@ class DataFrameController(
      * @return String
      */
     fun numeroContenedoresTipoDistrito(): String {
-
+        logger.debug("Número de contenedores de cada tipo que hay en cada distrito")
         return co.groupBy("distrito", "tipoContenedor")
             .aggregate { count() into "contenedores" }
             .sortBy("distrito").html()
@@ -72,6 +75,7 @@ class DataFrameController(
      * @return String
      */
     fun mediaContenedoresTipoDistrito(): String {
+        logger.debug{"Media de contenedores de cada tipo por distrito"}
         return co.groupBy("distrito", "tipoContenedor")
             .aggregate { meanOf { sum("cantidad") } into "media" }
             .sortBy("distrito")
@@ -83,6 +87,7 @@ class DataFrameController(
      *
      */
     fun graficoTotalContenedoresPorDistrito(rutaDestino: String) {
+        logger.debug{"Gráfico con el total de contenedores por distrito"}
         var a = co.groupBy("distrito", "tipoContenedor")
             .aggregate { count() into "total" }
             .sortBy("distrito")
@@ -112,6 +117,7 @@ class DataFrameController(
      * @return String
      */
     fun mediaToneladasAnualesTipoBasuraDistrito(): String {
+        logger.debug{"Media de toneladas anuales de recogidas por cada tipo de basura agrupadas por distrito"}
         return re.groupBy("nom_ditrito", "anio", "residuos")
             .aggregate {
                 mean("toneladas") into "Media"
@@ -125,6 +131,7 @@ class DataFrameController(
      *
      */
     fun graficoToneladasMensualesPorDistrito(rutaDestino: String) {
+        logger.debug{"Gráfico de media de toneladas mensuales de recogida de basura por distrito"}
         var a = re.groupBy("nom_ditrito", "mes")
             .aggregate { mean("toneladas") into "media" }
             .sortBy("nom_ditrito")
@@ -157,6 +164,7 @@ class DataFrameController(
      * @return String
      */
     fun maxMinMediaDesviacionToneladasAnualesTipoPorDistrito(): String {
+        logger.debug{"Máximo, mínimo , media y desviación de toneladas anuales de recogidas por cada tipo de basura agrupadas por distrito"}
         return re.groupBy("nom_ditrito", "residuos", "anio")
             .aggregate {
                 max("toneladas") into "Maximo"
@@ -175,6 +183,7 @@ class DataFrameController(
      * @return String
      */
     fun sumaRecogidoAnualPorDistrito(): String {
+        logger.debug { "Suma de todo lo recogido en un año por distrito" }
         return re.groupBy("nom_ditrito", "anio")
             .aggregate { sum("toneladas") into "recogido" }
             .sortBy("nom_ditrito")
@@ -188,6 +197,7 @@ class DataFrameController(
      * @return String
      */
     fun cantidadTipoPorDistrito(): String {
+        logger.debug{"Por cada distrito obtener para cada tipo de residuo la cantidad recogida"}
         return re.groupBy("nom_ditrito", "residuos")
             .aggregate { sum("toneladas") into "cantidad recogida" }
             .sortBy("nom_ditrito")
@@ -204,6 +214,7 @@ class DataFrameController(
      */
 
     fun numeroContenedoresTipoPorDistrito(distrito: String): String {
+        logger.debug{"Número de contenedores de cada tipo que hay en este distrito"}
         return co.groupBy("distrito", "tipoContenedor")
             .filter { it["distrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { count() into "numero_contenedores" }
@@ -218,6 +229,7 @@ class DataFrameController(
      * @return String
      */
     fun totalToneladasRecogidasDistrito(distrito: String): String {
+        logger.debug{"Total de toneladas recogidas en ese distrito por residuo"}
         return re.groupBy("nom_ditrito", "residuos")
             .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { sum("toneladas") into "total_toneladas" }
@@ -230,7 +242,7 @@ class DataFrameController(
      *
      */
     fun graficaTotalToneladasPorResiduoDistrito(rutaDestino: String, distrito: String) {
-
+        logger.debug{"Gráfico con el total de toneladas por residuo en ese distrito"}
         var a = re.groupBy("nom_ditrito", "residuos")
             .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate { sum("toneladas") into "total" }
@@ -265,6 +277,7 @@ class DataFrameController(
      * @return String
      */
     fun maxMinMediaDesviacionToneladasMesTipoPorDistrito(distrito: String): String {
+        logger.debug{"Máximo, mínimo, media y desviación por mes por residuo en dicho distrito"}
         return re.groupBy("nom_ditrito", "mes", "residuos")
             .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate {
@@ -282,6 +295,8 @@ class DataFrameController(
      *
      */
     fun graficaMaxMinMediaMesesDistrito(rutaDestino: String, distrito: String) {
+
+        logger.debug { "Gráfica del máximo, mínimo y media por meses en dicho distrito" }
         var a = re.groupBy("nom_ditrito", "mes")
             .filter { it["nom_ditrito"].toString().uppercase() == distrito.uppercase() }
             .aggregate {
@@ -327,6 +342,7 @@ class DataFrameController(
 
 
     fun resumen(rutaDestino: String): String {
+        logger.debug { "Html que genera de resumen" }
         var numContenedoresDistrito: String
         var mediaContenedorDistrito: String
         var mediaToneladasAnualesTipoBasuraDistrito: String
@@ -364,6 +380,7 @@ class DataFrameController(
     }
 
     fun resumenDistrito(rutaDestino: String, distrito: String): String {
+        logger.debug{"Html que genera de la opcion resumen distrito"}
         var numContenedoresDistrito: String
         var mediaContenedorDistrito: String = mediaContenedoresTipoDistrito()
         var mediaToneladasAnualesTipoBasuraDistrito: String = mediaToneladasAnualesTipoBasuraDistrito()

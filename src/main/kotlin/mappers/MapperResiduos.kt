@@ -5,11 +5,27 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import models.Residuos
+import mu.KotlinLogging
 import nl.adaptivity.xmlutil.serialization.XML
 import java.io.File
 
 
+/**
+ * Mapper residuos
+ * @author Jorge y Alfredo
+ * @since 19/10/2022
+ * @constructor Create empty Mapper residuos
+ */
 class MapperResiduos {
+
+    val logger = KotlinLogging.logger{}
+
+    /**
+     * To residuos d t o
+     *
+     * @param residuos
+     * @return ResiduosDTO
+     */
     fun toResiduosDTO(residuos: Residuos): ResiduosDTO {
         return ResiduosDTO(
             anio = residuos.anio,
@@ -22,6 +38,12 @@ class MapperResiduos {
         )
     }
 
+    /**
+     * To residuos
+     *
+     * @param residuos
+     * @return Residuos
+     */
     fun toResiduos(residuos: ResiduosDTO): Residuos {
         return Residuos(
             anio = residuos.anio,
@@ -34,7 +56,14 @@ class MapperResiduos {
         )
     }
 
+    /**
+     * Leer c s v
+     *
+     * @param ruta
+     * @return List<ResiduosDTO>
+     */
     fun leerCSV(ruta: String): List<ResiduosDTO> {
+        logger.debug { "Leyendo archivo csv" }
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".csv")) {
             if(fichero.readLines().take(1).first().split(";").size == 7) {
@@ -62,8 +91,14 @@ class MapperResiduos {
     }
 
 
-
+    /**
+     * Leer j s o n
+     *
+     * @param ruta
+     * @return List<ResiduosDTO>
+     */
     fun leerJSON(ruta:String): List<ResiduosDTO>{
+        logger.debug { "Leyendo archivo json" }
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".json")) {
             val json = Json { prettyPrint = true }
@@ -73,7 +108,14 @@ class MapperResiduos {
         }
     }
 
+    /**
+     * Leer x m l
+     *
+     * @param ruta
+     * @return List<ResiduosDTO>
+     */
     fun leerXML(ruta:String):List<ResiduosDTO>{
+        logger.debug { "Leyendo archivo xml" }
         val fichero = File(ruta)
         if(fichero.exists()&&ruta.endsWith(".xml")) {
             val xml = XML { indentString = " " }
@@ -83,12 +125,26 @@ class MapperResiduos {
         }
     }
 
-    fun copiarCSV(ruta: String,rutaDestino: String){
+    /**
+     * Copiar c s v
+     *
+     * @param ruta
+     * @param rutaDestino
+     */
+    fun copiarCSV(ruta: String, rutaDestino: String){
+        logger.debug { "Copiando archivo csv" }
         val fichero = File(ruta+File.separator+"modelo_residuos_2021.csv")
         fichero.copyTo(File(rutaDestino+File.separator+"modelo_residuos_2021.csv"))
     }
 
+    /**
+     * Exportar c s v
+     *
+     * @param ruta
+     * @param residuos
+     */
     fun exportarCSV(ruta: String, residuos: List<ResiduosDTO>){
+        logger.debug { "Exportando archivo csv" }
         val fichero = File(ruta+File.separator+"modelo_residuos_2021.csv")
         fichero.writeText("anio;mes;lote;residuos;distrito;nom_ditrito;toneladas\n")
         residuos.forEach { fichero.appendText("\n${it.anio};${it.mes};" +
@@ -96,14 +152,28 @@ class MapperResiduos {
                 "${it.toneladas}") }
     }
 
+    /**
+     * Exportar j s o n
+     *
+     * @param ruta
+     * @param residuos
+     */
     fun exportarJSON(ruta: String, residuos: List<ResiduosDTO>) {
+        logger.debug { "Exportando archivo json" }
         val json= Json { prettyPrint=true }
         val fichero=File(ruta+File.separator+"modelo_residuos_2021.json")
         fichero.writeText(json.encodeToString(residuos))
     }
 
 
+    /**
+     * Exportar x m l
+     *
+     * @param ruta
+     * @param residuos
+     */
     fun exportarXML(ruta: String, residuos:List<ResiduosDTO>){
+        logger.debug { "Exportando archivo xml" }
         val xml= XML{indentString=" "}
         val fichero=File(ruta+File.separator+"modelo_residuos_2021.xml")
         fichero.writeText(xml.encodeToString(residuos))

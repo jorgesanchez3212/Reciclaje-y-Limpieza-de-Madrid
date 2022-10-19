@@ -8,6 +8,19 @@ import nl.adaptivity.xmlutil.serialization.XmlElement
 import java.io.File
 import java.time.LocalDateTime
 import java.util.*
+
+/**
+ * Bitacora
+ * @author Jorge y Alfredo
+ * @since 19/10/2022
+ * @property id
+ * @property instante
+ * @property opcionElegida
+ * @property exito
+ * @property tiempoEjecucion
+ * @property path
+ * @constructor Create empty Bitacora
+ */
 @Serializable
 class Bitacora(
     @XmlElement (true)
@@ -25,7 +38,11 @@ class Bitacora(
 ) {
 
 
-     fun bitacora(){
+    /**
+     * Bitacora
+     *
+     */
+    fun bitacora(){
         val xml = XML { indentString = " " }
         val fichero = File(path + File.separator + "bitacora.xml")
         if(fichero.exists()){
