@@ -46,6 +46,4 @@ tenga y deberá procesarla generando en directorio_destino un resumen.html.
 - Jorge: <https://github.com/jorgesanchez3212>
 - Alfredo: <https://github.com/reyalfre>
 
-## Video
--https://www.youtube.com/watch?v=8-oLcugQy_s
 
