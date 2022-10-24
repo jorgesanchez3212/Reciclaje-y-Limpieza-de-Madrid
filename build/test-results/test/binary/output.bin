@@ -1,0 +1,7 @@
+O00:01:30.078 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+R00:01:30.170 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo xml
+O00:01:30.990 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+R00:01:31.009 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo csv
+O00:01:31.710 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+S00:01:31.726 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo json
+P00:01:31.779 [Test worker] DEBUG mappers.MapperResiduos - Copiando archivo csv

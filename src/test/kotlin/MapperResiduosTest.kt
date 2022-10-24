@@ -10,8 +10,8 @@ class MapperResiduosTest {
     var rutaDestino ="metadata"
     var archivoCopiado = File("metadata/modelo_residuos_2021.csv")
     val residuosArchivo = "data"+ File.separator + "modelo_residuos_2021.csv"
-    var archivoCopiadoJSON = File("metadata/modelo_residuos_2021.json")
-    var archivoCopiadoXML = File("metadata/modelo_residuos_2021.xml")
+    var archivoCopiadoJSON = File("metadata"+File.separator + "modelo_residuos_2021.json")
+    var archivoCopiadoXML = File("metadata"+File.separator + "modelo_residuos_2021.xml")
 
 
 

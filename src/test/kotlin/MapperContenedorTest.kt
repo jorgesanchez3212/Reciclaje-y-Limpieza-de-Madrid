@@ -12,8 +12,8 @@ class MapperContenedorTest {
     var rutaDestino ="metadata"
     var archivoCopiado = File("metadata/contenedores_varios.csv")
     val contenedores_varios = "data"+File.separator + "contenedores_varios.csv"
-    var archivoCopiadoJSON = File("metadata/contenedores_varios.json")
-    var archivoCopiadoXML = File("metadata/contenedores_varios.xml")
+    var archivoCopiadoJSON = File("metadata"+File.separator + "contenedores_varios.json")
+    var archivoCopiadoXML = File("metadata"+File.separator + "contenedores_varios.xml")
 
 
 

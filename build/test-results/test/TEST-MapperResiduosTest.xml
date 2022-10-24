@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MapperResiduosTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-10-18T18:35:19" hostname="LAPTOP-QTMA8KCV" time="1.948">
+<testsuite name="MapperResiduosTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-10-19T22:01:30" hostname="LAPTOP-QTMA8KCV" time="1.73">
   <properties/>
-  <testcase name="exportarXMLContenedorTests()" classname="MapperResiduosTest" time="0.757"/>
-  <testcase name="leerCSVContenedorTests()" classname="MapperResiduosTest" time="1.015"/>
-  <testcase name="exportarJSONContenedorTests()" classname="MapperResiduosTest" time="0.162"/>
+  <testcase name="exportarXMLContenedorTests()" classname="MapperResiduosTest" time="0.931"/>
+  <testcase name="leerCSVContenedorTests()" classname="MapperResiduosTest" time="0.717"/>
+  <testcase name="exportarJSONContenedorTests()" classname="MapperResiduosTest" time="0.067"/>
   <testcase name="copyCSVContenedorTests()" classname="MapperResiduosTest" time="0.01"/>
-  <system-out><![CDATA[]]></system-out>
+  <system-out><![CDATA[00:01:30.078 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+00:01:30.170 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo xml
+00:01:30.990 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+00:01:31.009 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo csv
+00:01:31.710 [Test worker] DEBUG mappers.MapperResiduos - Leyendo archivo csv
+00:01:31.726 [Test worker] DEBUG mappers.MapperResiduos - Exportando archivo json
+00:01:31.779 [Test worker] DEBUG mappers.MapperResiduos - Copiando archivo csv
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
